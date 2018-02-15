@@ -1,0 +1,140 @@
+<div class="container" id="containerVisualization">
+    
+    
+        <div class="card testimonial-card">
+    
+            <!--Bacground color-->
+            <div class="card-up indigo lighten-1">
+            </div>
+            <form novalidate [formGroup]="formVisualization">
+                <div class="card-body">
+                    <!--Name-->
+                    <div class="card-title">
+                        <div class="form-group">
+                            <button type="button" class="close" aria-label="Close" (click)="closeVisualization()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4>{{formVisualization.value.name}}</h4>
+                        </div>
+                        <hr>
+                    </div>
+    
+                    <!--Quotation-->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label>CPF:</label>
+                                <input type="text" class="form-control input-lg" placeholder="000.000.000-00" tabindex="1" formControlName="cpf" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label>RG:</label>
+                                <input type="text" class="form-control input-lg" placeholder="00.000.000-0" tabindex="2" formControlName="rg" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+    
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label>Email:</label>
+                                <input type="email" class="form-control input-lg" placeholder="name@example.com" tabindex="4" formControlName="email" readonly> 
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label>Situação:</label>
+                                <input type="text" class="form-control input-lg" tabindex="4" formControlName="active" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h6>
+                        <b>Contatos</b>
+                    </h6>
+                    <hr>
+                    <div class="form-row" formGroupName="phones">
+                        <div *ngFor="let phone of phones">
+                            <div class="col" [formGroupName]="phone">
+                                <div class="form-group">
+                                    <label>{{this.formVisualization.get('phones').get(phone).get('name').value}}</label>
+                                    <input type="text" name="rg" id="rg" class="form-control input-lg" tabindex="2" formControlName="number_phone" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h6>
+                        <b>Endereços</b>
+                    </h6>
+                    <hr>
+                    <!--Endereços -->
+    
+                    <!-- Endereço Residencial -->
+    
+                    <div *ngFor="let address of addressArray">
+    
+                        <div formGroupName="addresses">
+                            <div [formGroupName]="address">
+    
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Tipo:</label>
+                                            <input type="text" class="form-control input-lg" tabindex="2" formControlName="name" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Logradouro:</label>
+                                            <input type="text" class="form-control input-lg" tabindex="2" formControlName="street" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Nº:</label>
+                                            <input type="text" class="form-control input-lg" tabindex="2" formControlName="number" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Bairro:</label>
+                                            <input type="text" class="form-control input-lg" tabindex="2" formControlName="neighborhood" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Completo:</label>
+                                            <input type="text" class="form-control input-lg" tabindex="2" formControlName="complement" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Cidade:</label>
+                                            <input type="text" class="form-control input-lg" tabindex="2" formControlName="city" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Estado:</label>
+                                            <input type="text" class="form-control input-lg" tabindex="2" formControlName="state" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <hr>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--/.Card-->
+            <!--/.Card-->
+    
+        </div>
+    </div>

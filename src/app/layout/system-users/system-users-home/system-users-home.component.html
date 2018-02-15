@@ -1,0 +1,56 @@
+<div [@routerTransition]>
+
+    <h2 class="page-header"> Administração de Usuários do Sistema</h2>
+
+    <app-page-header [rota]="'/dashboard'" [titulo]="'Dashboard'" [heading]="'Administração
+         de Usuários do Sistema'" [icon]="'fa-wrench'"></app-page-header>
+
+    <div class="card card-default mb-3">
+        <div class="card-header">
+            <i class="fa fa-address-card"></i>
+            Selecione a opção desejada
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!controlaTela">
+
+        <div class="col-sm-4">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-header">Cadastro de Usuários</div>
+
+                <div class="card-body">
+
+                    <h5 class="card-title">Cadastro de novo usuário</h5>
+
+                    <p class="card-text">Utilize esta opção para realizar o cadastro de um novo usuário do sistema e informar as permissões necessárias
+                        acesso. </p>
+
+                    <a>
+                        <button type="submit" class="btn btn-light btn-lg" title="Cadastro de Usuários" (click)="addNewUser()">Cadastro</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+
+            <div class="card text-white bg-secondary mb-3">
+
+                <div class="card-header">Listagem de Usuários</div>
+
+                <div class="card-body">
+
+                    <h5 class="card-title">Listagem de usuários do sistema</h5>
+
+                    <p class="card-text">Utilize para listar todos os usuários cadastrados no sistema, com possibilidade de edição, modificação
+                        e exclusão de dados.</p>
+                    <a>
+                        <button type="submit" class="btn btn-light btn-lg" title="Listagem de Usuários" (click)="listUsers()">
+                            Listagem </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
