@@ -1,56 +1,135 @@
 <div [@routerTransition]>
 
-    <h2 class="page-header"> Administração de Usuários do Sistema</h2>
-
-    <app-page-header [rota]="'/dashboard'" [titulo]="'Dashboard'" [heading]="'Administração
-         de Usuários do Sistema'" [icon]="'fa-wrench'"></app-page-header>
-
-    <div class="card card-default mb-3">
-        <div class="card-header">
-            <i class="fa fa-address-card"></i>
-            Selecione a opção desejada
-        </div>
+    <div class="header">
+        <h2 class="page-header"> Administração de Usuários do Sistema</h2>
+        <hr>
     </div>
 
-    <div class="row" *ngIf="!controlaTela">
 
-        <div class="col-sm-4">
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-header">Cadastro de Usuários</div>
+    <!--     <app-page-header [rota]="'/dashboard'" [titulo]="'Dashboard'" [heading]="'Administração
+                 de Usuários do Sistema'" [icon]="'fa-wrench'"></app-page-header>
+    
+        <div class="card card-default mb-3">
+            <div class="card-header">
+                <i class="fa fa-address-card"></i>
+                Selecione a opção desejada
+            </div>
+        </div>
+     -->
 
-                <div class="card-body">
 
-                    <h5 class="card-title">Cadastro de novo usuário</h5>
+    <div class="row">
 
-                    <p class="card-text">Utilize esta opção para realizar o cadastro de um novo usuário do sistema e informar as permissões necessárias
-                        acesso. </p>
+        <div class="col-md-2 col-md-4 col-cards">
+            <div class="contact-area">
+                <div class="contact">
+                    <main>
+                        <section>
+                            <div class="content">
+                                <img src="https://image.flaticon.com/icons/svg/190/190653.svg" alt="Profile Image">
 
-                    <a>
-                        <button type="submit" class="btn btn-light btn-lg" title="Cadastro de Usuários" (click)="addNewUser()">Cadastro</button>
-                    </a>
+                                <aside>
+                                    <h1>Cadastro de Usuário</h1>
+                                    <p>Cadastre um novo usuário</p>
+                                </aside>
+
+                                <button class="btn" (click)="addNewUser()">
+                                    <span>Cadastrar</span>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                        <g class="nc-icon-wrapper" fill="#444444">
+                                            <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="title">
+                                <p>Contact Me</p>
+                            </div>
+                        </section>
+
+
+                    </main>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-md-4 col-cards">
+                <div class="contact-area">
+                    <div class="contact">
+                        <main>
+                            <section>
+                                <div class="content">
+                                    <img src="https://image.flaticon.com/icons/svg/190/190653.svg" alt="Profile Image">
+    
+                                    <aside>
+                                        <h1>Cadastro de Usuário</h1>
+                                        <p>Cadastre um novo usuário</p>
+                                    </aside>
+    
+                                    <button class="btn" (click)="addNewUser()">
+                                        <span>Cadastrar</span>
+    
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                            <g class="nc-icon-wrapper" fill="#444444">
+                                                <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+    
+                                <div class="title">
+                                    <p>Contact Me</p>
+                                </div>
+                            </section>
+    
+    
+                        </main>
+    
+    
+                    </div>
+                </div>
+            </div>
+    
+
+        <div class="col-md-2 col-md-4 col-cards">
+            <div class="contact-area">
+                <div class="contact">
+                    <main>
+                        <section>
+                            <div class="content">
+                                <img src="https://image.flaticon.com/icons/svg/190/190653.svg" alt="Profile Image">
+
+                                <aside>
+                                    <h1>Listagem de Usuário</h1>
+                                    <p> Lista de usuários no sistema </p>
+                                </aside>
+
+                                <button (click)="listUsers()" class="btn">
+                                    <span>Listagem</span>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                        <g class="nc-icon-wrapper" fill="#444444">
+                                            <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="title">
+                                <p>Contact Me</p>
+                            </div>
+                        </section>
+
+
+                    </main>
+
+
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-4">
-
-            <div class="card text-white bg-secondary mb-3">
-
-                <div class="card-header">Listagem de Usuários</div>
-
-                <div class="card-body">
-
-                    <h5 class="card-title">Listagem de usuários do sistema</h5>
-
-                    <p class="card-text">Utilize para listar todos os usuários cadastrados no sistema, com possibilidade de edição, modificação
-                        e exclusão de dados.</p>
-                    <a>
-                        <button type="submit" class="btn btn-light btn-lg" title="Listagem de Usuários" (click)="listUsers()">
-                            Listagem </button>
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
-
 </div>

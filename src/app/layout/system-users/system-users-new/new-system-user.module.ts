@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
 import {NgxMaskModule} from 'ngx-mask';
 import { MaskService } from '../../../shared/services/mask-forms.service';
+import { AuditService } from '../../../shared/services/audit.service';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { MaskService } from '../../../shared/services/mask-forms.service';
   ],
   declarations: [NewSystemUserComponent],
   
-  providers:[SystemUsersService, MaskService]
+  providers:[SystemUsersService, MaskService, AuditService]
   // providers : fornecedor -> serviço fornecedor 
 })
 export class NewSystemUserModule { }
