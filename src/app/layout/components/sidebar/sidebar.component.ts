@@ -11,4 +11,8 @@ export class SidebarComponent {
         (<HTMLInputElement> document.getElementById("chk")).checked = false; 
     }
 
+    teste() {
+        alert('foi!');
+    }
+
 }

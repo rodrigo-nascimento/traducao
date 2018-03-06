@@ -1,32 +1,7 @@
 $topnav-background-color: #18638c;
 
-.menu-icon {
-    position: absolute;
-    font-size: 35px;
-    font-weight: bold;
-    padding: 5px;
-    width: 70px;
-    height: 60px;
-    border-right: 1px solid #fff;
-    background-color: rgba(0,0,0,0);
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    left: 10px;
-    top: 5px;
-    text-align: center;
-    z-index: 101;
-}
-
-#chk {
-    display: none;
-}
-
-#chk:checked ~ #principal {
-    transform: translateX(300px);
-}
-
-#chk:checked ~.bg {
-    display: block;
+#principal:hover {
+    transform: translateX(230px);
 }
 
 .menu {
@@ -41,7 +16,7 @@ $topnav-background-color: #18638c;
 
 #principal {
     width: 300px;
-    left: -300px;
+    left: -230px;
 }
 
 ul {
@@ -82,25 +57,27 @@ ul li a:hover {
 }
 
 #logo-projeto {
-    width: 20px;
-    margin-top: -17px;
-    margin-left: 105px;
-    margin-right: 9px;
+    width: 28px;
+    float: right;
+    margin-top: 17px;
+    margin-right: 21px;
 }
 
 .navbar-brand {
     color: #fff;
     padding-top: 27px;
+    padding-left: 20px;
     font-size: 20px;
 }
 
 hr {
     position: relative;
-    top: -9px;
+    top: -8px;
     background-color: rgb(204, 204, 204);
 }
 
 .fa-home, .fa-users, .fa-bus {
     font-size: 30px;
-    margin-right: 10px;
+    float: right;
+    margin-right: 4px;
 }

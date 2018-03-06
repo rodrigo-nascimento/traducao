@@ -9,6 +9,7 @@ $topnav-background-color: #18638c;
         .navbar-brand {
             color: #fff;
             padding-top: 20px;
+            margin-left: 70px;
             font-size: 20px;
         }
 
@@ -26,10 +27,4 @@ $topnav-background-color: #18638c;
 
 a:link {
     text-decoration:none;  
-}
-
-#logo-projeto {
-    width: 20px;
-    margin-left: 90px;
-    margin-right: 10px;
 }
