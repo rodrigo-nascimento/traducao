@@ -14,10 +14,11 @@ export class HeaderComponent implements OnInit {
     public userMail: string;
 
     constructor(private translate: TranslateService, public router: Router) {
+
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&
-                window.innerWidth <= 992 &&
+                window.innerWidth <= 992     &&
                 this.isToggled()
             ) {
                 this.toggleSidebar();
@@ -40,17 +41,10 @@ export class HeaderComponent implements OnInit {
         dom.classList.toggle(this.pushRightClass);
     }
 
-    rltAndLtr() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle('rtl');
-    }
-
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
         localStorage.removeItem('token');
     }
 
-    changeLang(language: string) {
-        this.translate.use(language);
-    }
+
 }

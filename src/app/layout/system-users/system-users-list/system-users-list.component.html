@@ -1,24 +1,47 @@
 <div *ngIf="!visualization">
-    <br>
-    <app-page-header [rota]="'/system-users/systemUsersHome'" [titulo]="'Administração dos Usuários do Sistema'" [heading]="'Listagem de Usuários do Sistema'"
-        [icon]="'fa-wrench'"></app-page-header>
-    <table class="table table-hover table-striped">
+
+    <nav class="navbar navbar-light bg-light" >
+        <div class="row">
+
+            <div class="col-md-6">
+                <select class="custom-select" #selectSearch>
+                    <option disabled selected value> buscar por.. </option>
+                    <option value="name"> nome </option> 
+                    <option value="cpf"> cpf </option>
+                    <option value="rg"> rg </option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <input class="form-control" type="search" placeholder="buscar.." aria-label="Search" #inputSearch (keyup)="search( selectSearch.value, inputSearch.value)">
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-primary" type="submit" (click)="search(selectSearch.value, inputSearch.value)">
+                    Buscar
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <table class="table-hover">
         <thead>
             <tr>
-                <th id="primeiro">Nome Completo</th>
-                <th>E-mail</th>
-                <th>CPF</th>
-                <th>Status</th>
-                <th id="ultimo">Ações</th>
+                <th id="primeiro-th"> Nome Completo </th>
+                <th> E-mail </th>
+                <th> CPF </th>
+                <th> Status </th>
+                <th id="ultimo-th"> Ações </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let user of apiUser">
-                <td> {{ user.name }}</td>
+                <td class="primeiro-td"> {{ user.name }} </td>
                 <td> {{ user.email }}</td>
                 <td> {{ user.documents[0].value }}</td>
                 <!-- *********************** HABILITADO ******************************** -->
-                <td *ngIf="user.active">Ativo
+                <td *ngIf="user.active"> on
                     <br>
                     <label class="switch">
                         <input type="checkbox" (click)="trocaStatus(user)" checked>
@@ -26,32 +49,32 @@
                     </label>
                 </td>
                 <!-- *********************** DESABILITADO ******************************** -->
-                <td *ngIf="!user.active">Desabilitado
+                <td *ngIf="!user.active"> off
                     <br>
                     <label class="switch">
                         <input type="checkbox" (click)="trocaStatus(user)">
                         <span class="slider round"></span>
                     </label>
                 </td>
-                <td id="excessao">
+                <td class="ultimo-td" id="excessao">
                     <div class=container>
                         <!-- *********************** VISUALIZAR ******************************** -->
-                        <button id="warning" type="submit" title="Visualizar cadastro" (click)="openVisualization(user._id)">
-                            <span class="fa fa-users"></span>
+                        <button id="visualization" type="submit" title="Visualizar cadastro" (click)="openVisualization(user._id)">
+                            <span class="fa fa-eye"></span>
                         </button>
 
                         <ng-template #contentVisu let-c="close" let-d="dismiss">
                             <div class="modal-header">
                                 <button id="btnVisu" type="submit" (click)="addNewUser()" (click)="d('Cross click')">
-                                    <span class="fa fa-user-plus visu"></span>
+                                    <span class="fa fa-user-plus"></span>
                                 </button>
 
                                 <button id="btnVisu" type="submit" (click)="editUsers(user)" (click)="d('Cross click')">
-                                    <span class="fa fa-pencil-square-o visu"></span>
+                                    <span class="fa fa-pencil-square-o"></span>
                                 </button>
 
                                 <button id="btnVisu" type="submit" (click)="openDelete(content)" (click)="d('Cross click')">
-                                    <span class="fa fa-user-times visu"></span>
+                                    <span class="fa fa-user-times"></span>
                                 </button>
                                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                     <span aria-hidden="true">&times;</span>
@@ -63,13 +86,13 @@
                         </ng-template>
 
                         <!-- *********************** EDITAR ******************************** -->
-                        <button id="warning" type="submit" title="Editar Usuário" (click)="editUsers(user)">
+                        <button id="edit" type="submit" title="Editar Usuário" (click)="editUsers(user)">
                             <span class="fa fa-pencil"></span>
                         </button>
 
                         <!-- *********************** DELETAR ******************************** -->
-                        <button id="danger" type="submit" class="btn btn-primary" title="Deletar usuário" (click)="openDelete(content)">
-                            <span class="fa fa-close"></span>
+                        <button id="delete" type="submit" class="btn btn-primary" title="Deletar usuário" (click)="openDelete(content)">
+                            <span class="fa fa-trash"></span>
                         </button>
                     </div>
 
@@ -122,11 +145,11 @@
                         <div class="form-group mb-2">
                             <label style="margin-right:5px;">Exibir</label>
                             <select class="selectpicker form-control" #select (change)="quantPorPagina(select.value)">
-                                <option value="10"> 10</option>
-                                <option value="15"> 15</option>
-                                <option value="20"> 20</option>
-                                <option value="25"> 25</option>
-                                <option value="0"> todos</option>
+                                <option value="10"> 10 </option>
+                                <option value="15"> 15 </option>
+                                <option value="20"> 20 </option>
+                                <option value="25"> 25 </option>
+                                <option value="0"> todos </option>
                             </select>
                             <label style="margin-left:5px;">Registros</label>
                         </div>

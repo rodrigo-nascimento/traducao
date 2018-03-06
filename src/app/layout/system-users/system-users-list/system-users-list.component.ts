@@ -4,6 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SystemUsersService } from '../../../shared/services/system-users.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { routerTransition } from '../../../router.animations';
+import { Alert } from 'selenium-webdriver';
+import { Title } from '@angular/platform-browser/src/browser/title';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
 @Component({
@@ -42,6 +45,50 @@ export class SystemUsersListComponent implements OnInit {
     this.main(1);
   }
 
+  /* ************************* Busca **************************/
+
+  public search(option, filter) {
+
+    // if(this.apiUser.length === 0 || 
+    //   this.filtro === null      ||
+    //   this.filtro.trim() === '')
+    //   {
+    //   return this.apiUser;
+    // }
+
+    // return this.apiUser.filter((v) => {
+    //   if(v.toString().toLocaleLowerCase().indexOf(this.filtro.toLocaleLowerCase()) >= 0) {
+    //     return true;
+    //   }
+    //   return false;
+    // });
+    //-------------------------------------------------------------------------------------------
+
+
+    var objSearch: object = {
+      campo: option,
+      valor: filter
+    };
+
+    // console.log('option: ' + option);
+    // console.log('filter: ' + filter);
+
+    if (filter != 'INVALID') {
+
+      this.systemUsersService.search(this.token, objSearch)
+        .subscribe((apiResponse: SystemUsers[]) => {
+
+          this.apiUser = apiResponse;
+          this.main(1);
+        }
+      );
+
+    } else {
+      alert('tipo invalido');
+    }
+  }
+
+
   // Visualização do Usuário 
   public openVisualization(id): void {
 
@@ -79,8 +126,8 @@ export class SystemUsersListComponent implements OnInit {
   public listUsers(limit, pagina): void {
 
     let skip = ((pagina - 1) * this.quantPorPage);
+    
     const obj = {
-
       limit: limit,
       skip: skip
     };
@@ -121,7 +168,8 @@ export class SystemUsersListComponent implements OnInit {
 
   public editUsers(userE: SystemUsers) {
     // navegação por rota para outro componente 
-    this.router.navigate(['/system-users/systemUsersEdit'], { queryParams: { id: userE._id } });
+
+    this.router.navigate(['/system-users/systemUsersEdit', userE._id]);
   }
 
   public deleteUser(user: SystemUsers): void {
@@ -140,10 +188,10 @@ export class SystemUsersListComponent implements OnInit {
         }
 
       },
-      (error: any) => {
-        alert('Erro ao deletar o usuário')
-        if (error._body === '{"errors":["Não foi possível deletar o usuário."]}') { }
-      }
+        (error: any) => {
+          alert('Erro ao deletar o usuário')
+          if (error._body === '{"errors":["Não foi possível deletar o usuário."]}') { }
+        }
       );
   }
 
@@ -170,11 +218,7 @@ export class SystemUsersListComponent implements OnInit {
 
   public quantPorPagina(value: number): any {
 
-    if (value > this.totalDeUsuarios) {
-      this.quantPorPage = this.totalDeUsuarios;
-      this.main(1);
-    }
-    else if (value === 0) {
+    if (value > this.totalDeUsuarios || value == 0) {
       this.quantPorPage = this.totalDeUsuarios;
       this.main(1);
     }
@@ -186,9 +230,9 @@ export class SystemUsersListComponent implements OnInit {
 
   /* ******************************* EDITA STATUS ******************************* */
   public trocaStatus(user): void {
-
+    console.log(user.active)
     user.active = !user.active;
-  
+    console.log(user.active)
     this.systemUsersService.editUser(user, this.token)
       .subscribe((apiResponse: SystemUsers) => {
         this.router.navigateByUrl('/system-users/systemUsersList');
@@ -198,5 +242,7 @@ export class SystemUsersListComponent implements OnInit {
 
         }
       });
+
   }
+
 }

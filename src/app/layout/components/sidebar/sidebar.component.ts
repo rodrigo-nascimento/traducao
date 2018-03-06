@@ -6,18 +6,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-    isActive: boolean = false;
-    showMenu: string = '';
-
-    eventCalled() {
-        this.isActive = !this.isActive;
+    
+    closeMenu() {
+        (<HTMLInputElement> document.getElementById("chk")).checked = false; 
     }
 
-    addExpandClass(element: any) {
-        if (element === this.showMenu) {
-            this.showMenu = '0';
-        } else {
-            this.showMenu = element;
-        }
-    }
 }

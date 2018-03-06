@@ -1,38 +1,35 @@
 $topnav-background-color: #18638c;
 :host {
     .navbar {
+        position: absolute;
+        z-index: 1;
         background-color: $topnav-background-color;
+        border-bottom: 1px solid #fff;
+
         .navbar-brand {
             color: #fff;
+            padding-top: 20px;
+            font-size: 20px;
         }
+
         .nav-item > a {
             color: rgb(255, 255, 255);
-            &:hover {
-                color: rgb(0, 0, 0);
+            text-decoration: none;
+            &:hover { 
+                background-color: rgba(0,0,0,0);
+                color: rgb(97, 138, 252);
             }
         }
+        
     }
-    .messages {
-        width: 300px;
-        .media {
-            border-bottom: 1px solid #ddd;
-            padding: 5px 10px;
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-        .media-body {
-            h5 {
-                font-size: 13px;
-                font-weight: 600;
-            }
-            .small {
-                margin: 0;
-            }
-            .last {
-                font-size: 12px;
-                margin: 0;
-            }
-        }
-    }
+}
+
+a:link {
+    text-decoration:none;  
+}
+
+#logo-projeto {
+    width: 20px;
+    margin-left: 90px;
+    margin-right: 10px;
 }

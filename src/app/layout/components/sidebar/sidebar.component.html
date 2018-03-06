@@ -1,30 +1,37 @@
-<nav class="sidebar" [ngClass]="{sidebarPushRight:
-    isActive}">
+
+    <input type="checkbox" id="chk">
+    <label for="chk" class="menu-icon"> &#9776; </label>
+    
+    <div class="bg" id="bg"></div>
    
-       <ul class="list-group">
-   
-           <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" title="Principal" class="list-group-item">
-   
-               <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
-   
-           </a>
-           <a [routerLink]="['/system-users']" [routerLinkActive]="['router-link-active']" title="Usuários" class="list-group-item"
-           
-         >
-   
-               <i class="fa fa-wrench"></i>&nbsp;{{ 'System Users' | translate }}
-   
-           </a>
-   
-           <a [routerLink]="['/university-transportation']" [routerLinkActive]="['router-link-active']" title="Transporte Universitário" class="list-group-item">
-               
-                           <i class="fa fa-wrench"></i>&nbsp;{{ 'University Transportation' | translate }}
-               
-                       </a>
-   
-       </ul>
-   
-   </nav>
-   
-   
-   
+    <nav class="menu" id="principal">
+
+        <img src="assets/images/logo_projeto.png" id="logo-projeto">
+
+        <a class="navbar-brand" href="#"> Ilha Conectada </a> <br> <hr>
+
+        <ul>
+            <li>
+                <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" title="Principal" class="list-group-item" (click)="closeMenu()">
+                    <i class="fa fa-home"></i>
+                    <span> Home </span>
+                </a>                        
+            </li>
+
+            <li>
+                <a [routerLink]="['/system-users']" [routerLinkActive]="['router-link-active']" title="Usuários" class="list-group-item" (click)="closeMenu()">
+                    <i class="fa fa-users"></i>
+                    <span> Users </span>
+                </a>                        
+            </li>
+
+            <li>
+                <a [routerLink]="['/university-transportation']" [routerLinkActive]="['router-link-active']" title="Transporte Universitário" class="list-group-item" (click)="closeMenu()">
+                <i class="fa fa-bus"></i>
+                <span> Bus University </span>
+                </a>    
+            </li>
+
+        </ul>
+    </nav>
+

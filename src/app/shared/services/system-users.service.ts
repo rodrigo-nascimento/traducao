@@ -175,8 +175,20 @@ export class SystemUsersService {
 
          return this.http.get(`//viacep.com.br/ws/${cep}/json`)
         .map(dados => dados.json());
+    }
 
-            
+    public search(token, object): Observable<SystemUsers[]> {
+
+        let headers: Headers = new Headers();
+        headers.append('Content-type', 'application/json');
+        headers.append('Authorization', token);
+
+        let link = `${URL_AuthAPI}/systemUsers/search`;
+        let body = JSON.stringify(object);
+        let option = new RequestOptions({ headers: headers });
+
+        return this.http.post(link, body, option)
+            .map((resposta: Response) => resposta.json());
     }
 
 }
