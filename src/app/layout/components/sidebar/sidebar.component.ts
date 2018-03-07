@@ -6,13 +6,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-    
-    closeMenu() {
-        (<HTMLInputElement> document.getElementById("chk")).checked = false; 
-    }
 
-    teste() {
-        alert('foi!');
+    fundoEscuro(choose: string) {
+        document.getElementById('bg').style.display = choose;
     }
 
 }

@@ -1,31 +1,30 @@
  
     <div class="bg" id="bg"></div>
    
-    <nav class="menu" id="principal">
-
-        <a class="navbar-brand" href="#"> Ilha Conectada </a> 
-        <img src="assets/images/logo_projeto.png" id="logo-projeto">        
-        <br> <hr>
-
-
+    <nav class="menu" id="principal" (mouseenter)="fundoEscuro('block')" (mouseleave)="fundoEscuro('none')">
+       
+        <img src="assets/images/logo_projeto.png" id="logo-projeto"> 
+        <a class="navbar-brand" href="#"> Ilha Conectada </a>
+        <hr class="header">
+       
         <ul>
             <li>
-                <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" title="Principal" class="list-group-item" (click)="closeMenu()">
-                    <span> Home </span>
+                <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" title="Principal" class="list-group-item">
+                    <span class="ajuste"> Home </span>
                     <i class="fa fa-home"></i>
                 </a>                        
             </li>
 
             <li>
-                <a [routerLink]="['/system-users']" [routerLinkActive]="['router-link-active']" title="Usuários" class="list-group-item" (click)="closeMenu()">
-                    <span> Users </span>
+                <a [routerLink]="['/system-users']" [routerLinkActive]="['router-link-active']" title="Usuários" class="list-group-item">
+                    <span class="ajuste"> Users </span>
                     <i class="fa fa-users"></i>
                 </a>                        
             </li>
 
             <li>
-                <a [routerLink]="['/university-transportation']" [routerLinkActive]="['router-link-active']" title="Transporte Universitário" class="list-group-item" (click)="closeMenu()">
-                    <span> Bus University </span>
+                <a [routerLink]="['/university-transportation']" [routerLinkActive]="['router-link-active']" title="Transporte Universitário" class="list-group-item">
+                    <span class="ajuste"> Bus University </span>
                     <i class="fa fa-bus"></i>
                 </a>    
             </li>

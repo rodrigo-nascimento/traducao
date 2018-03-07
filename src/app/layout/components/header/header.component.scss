@@ -1,25 +1,23 @@
 $topnav-background-color: #18638c;
 :host {
     .navbar {
-        position: absolute;
-        z-index: 1;
+        position: fixed;
+        z-index: 120;
+        height: 70px;
         background-color: $topnav-background-color;
-        border-bottom: 1px solid #fff;
+        border-bottom: 5px solid #fff;
 
         .navbar-brand {
             color: #fff;
-            padding-top: 20px;
-            margin-left: 70px;
+            padding-top: 13px;
+            margin-left: 60px;
             font-size: 20px;
         }
 
         .nav-item > a {
             color: rgb(255, 255, 255);
+            font-weight: bolder;
             text-decoration: none;
-            &:hover { 
-                background-color: rgba(0,0,0,0);
-                color: rgb(97, 138, 252);
-            }
         }
         
     }
@@ -27,4 +25,8 @@ $topnav-background-color: #18638c;
 
 a:link {
     text-decoration:none;  
+}
+
+.fa-user {
+    font-size: 20px;
 }

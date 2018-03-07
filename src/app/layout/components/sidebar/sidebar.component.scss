@@ -1,22 +1,22 @@
 $topnav-background-color: #18638c;
 
-#principal:hover {
-    transform: translateX(230px);
-}
-
 .menu {
     height: 100%;
-    position: absolute;
+    position: fixed;
     background-color: $topnav-background-color;
     top: 0;
     overflow: hidden;
-    transition: all .2s;
-    z-index: 100;
+    transition: all .3s;
+    z-index: 122;
 }
 
 #principal {
-    width: 300px;
-    left: -230px;
+    width: 280px;
+    left: -218px;
+}
+
+#principal:hover{
+    transform: translateX(218px); 
 }
 
 ul {
@@ -24,7 +24,7 @@ ul {
     list-style: none;
     position: relative;
     width: 340px;
-    top: -25px;
+    top: -17px;
     
 }
 
@@ -45,7 +45,11 @@ ul li a:hover {
     background-color: #fff;
 }
 
-.bg {
+.ajuste {
+    padding-left: 8px;
+}
+
+.bg, #bg {
     width: 100%;
     height: 100%;
     left: 0;
@@ -53,31 +57,31 @@ ul li a:hover {
     position: fixed;
     background-color:rgba(0, 0, 0, 0.7); 
     display: none;
-    z-index: 100;
-}
-
-#logo-projeto {
-    width: 28px;
-    float: right;
-    margin-top: 17px;
-    margin-right: 21px;
-}
-
-.navbar-brand {
-    color: #fff;
-    padding-top: 27px;
-    padding-left: 20px;
-    font-size: 20px;
-}
-
-hr {
-    position: relative;
-    top: -8px;
-    background-color: rgb(204, 204, 204);
+    z-index: 121;
 }
 
 .fa-home, .fa-users, .fa-bus {
     font-size: 30px;
     float: right;
-    margin-right: 4px;
+    margin-right: 2px;
+}
+
+#logo-projeto {
+    width: 28px;
+    float: right;
+    margin-top: 6px;
+    margin-right: 21px;
+}
+
+.navbar-brand {
+    color: #fff;
+    padding-top: 17px;
+    margin-left: 25px;
+    font-size: 20px;
+}
+
+hr.header{
+    margin-top: 13px;
+    height: 1px;
+    background-color: #fff;    
 }
