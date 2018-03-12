@@ -69,6 +69,22 @@ export class SystemUsersService {
 
     }
 
+     // *******************DELETAR USUARIO******************** Ok
+     public deleteUser(systemUsers: SystemUsers, token: string): Observable<SystemUsers> {
+
+        let headers: Headers = new Headers();
+        headers.append('Content-type', 'application/json');
+        headers.append('Authorization', token);
+
+            return this.http.put(
+                `${URL_AuthAPI}/systemUsers/delAdm`,
+                JSON.stringify(systemUsers),
+                new RequestOptions({ headers: headers }))
+                .map((resposta: Response) => resposta.json());
+
+    }
+
+    // *******************CADASTRAR USUARIO******************** OK
     public registerUsersAdm(systemUsers: SystemUsers, token: string): Observable<SystemUsers> {
 
         let headers: Headers = new Headers();
@@ -76,44 +92,25 @@ export class SystemUsersService {
         headers.append('Authorization', token);
 
         return this.http.post(
-            `${URL_AuthAPI}/systemUsers`,
+            `${URL_AuthAPI}/systemUsers/cadAdm`,
             JSON.stringify(systemUsers),
             new RequestOptions({ headers: headers }))
             .map((resposta: Response) => resposta.json());
-
     }
 
+    // *******************EDITAR USUARIO******************** OK
     public editUser(systemUsers: SystemUsers, token: string): Observable<SystemUsers> {
-
 
         let headers: Headers = new Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', token);
 
         return this.http.put(
-            `${URL_AuthAPI}/systemUsers/` + systemUsers._id,
+            `${URL_AuthAPI}/systemUsers/editAdm`,
             JSON.stringify(systemUsers),
             new RequestOptions({ headers: headers }))
             .map((resposta: Response) => resposta.json());
-
     }
-
-
-    public deleteUser(id: String, token: string): Observable<SystemUsers> {
-
-        let headers: Headers = new Headers();
-        headers.append('Content-type', 'application/json');
-        headers.append('Authorization', token);
-
-        return this.http.delete(
-
-            `${URL_AuthAPI}/systemUsers/` + id,
-
-            new RequestOptions({ headers: headers }))
-            .map((resposta: Response) => resposta.json());
-
-    }
-
 
     public validateFields(objectBusca: object, token: string): Observable<SystemUsers> {
         //metodo utilizado para validação dos campos no cadastro 
@@ -173,8 +170,10 @@ export class SystemUsersService {
 
     public findCep(cep: string): Observable<Object> {
 
-         return this.http.get(`//viacep.com.br/ws/${cep}/json`)
-        .map(dados => dados.json());
+        return this.http.get(`//viacep.com.br/ws/${cep}/json`)
+            .map(dados => dados.json());
+
+
     }
 
     public search(token, object): Observable<SystemUsers[]> {
@@ -190,5 +189,4 @@ export class SystemUsersService {
         return this.http.post(link, body, option)
             .map((resposta: Response) => resposta.json());
     }
-
 }

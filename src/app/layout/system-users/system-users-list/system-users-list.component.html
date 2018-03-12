@@ -1,47 +1,50 @@
 <div *ngIf="!visualization">
-
-    <nav class="navbar navbar-light bg-light" >
+    <!--     <br>
+    <app-page-header [rota]="'/system-users/systemUsersHome'" [titulo]="'Administração dos Usuários do Sistema'" [heading]="'Listagem de Usuários do Sistema'"
+        [icon]="'fa-wrench'"></app-page-header> -->
+    <nav class="navbar navbar-light bg-light">
         <div class="row">
-
             <div class="col-md-6">
-                <select class="custom-select" #selectSearch>
-                    <option disabled selected value> buscar por.. </option>
-                    <option value="name"> nome </option> 
-                    <option value="cpf"> cpf </option>
-                    <option value="rg"> rg </option>
-                </select>
+                    <select class="custom-select" #selectSearch>
+                            <option value="INVALID" selected>Escolha um tipo para buscar</option>
+                            <option value="name">NOME</option>
+                            <option value="cpf">CPF</option>
+                            <option value="rg">RG</option>
+                            <option value="email">E-MAIL</option>
+                            <option value="phone">TELEFONE</option>
+                            <option value="city">CIDADE</option>
+                        </select>
             </div>
-
+           
             <div class="col-md-4">
-                <input class="form-control" type="search" placeholder="buscar.." aria-label="Search" #inputSearch (keyup)="search( selectSearch.value, inputSearch.value)">
+                    <input class="form-control" type="search" placeholder="..." aria-label="Search" #inputSearch>
             </div>
 
             <div class="col-md-2">
-                <button class="btn btn-primary" type="submit" (click)="search(selectSearch.value, inputSearch.value)">
-                    Buscar
-                </button>
+                    <button class="btn btn-primary" type="submit" (click)="search(selectSearch.value, inputSearch.value)">Buscar</button>
+               <!-- TROCAR BOTAO PARA CANCELAR FILTRO -->
             </div>
 
+ 
         </div>
     </nav>
-
-    <table class="table-hover">
+    <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th id="primeiro-th"> Nome Completo </th>
-                <th> E-mail </th>
-                <th> CPF </th>
-                <th> Status </th>
-                <th id="ultimo-th"> Ações </th>
+                <th id="primeiro">Nome Completo</th>
+                <th>E-mail</th>
+                <th>CPF</th>
+                <th>Status</th>
+                <th id="ultimo">Ações</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let user of apiUser">
-                <td class="primeiro-td"> {{ user.name }} </td>
+                <td> {{ user.name }}</td>
                 <td> {{ user.email }}</td>
                 <td> {{ user.documents[0].value }}</td>
                 <!-- *********************** HABILITADO ******************************** -->
-                <td *ngIf="user.active"> on
+                <td *ngIf="user.active">Ativo
                     <br>
                     <label class="switch">
                         <input type="checkbox" (click)="trocaStatus(user)" checked>
@@ -49,32 +52,32 @@
                     </label>
                 </td>
                 <!-- *********************** DESABILITADO ******************************** -->
-                <td *ngIf="!user.active"> off
+                <td *ngIf="!user.active">Desabilitado
                     <br>
                     <label class="switch">
                         <input type="checkbox" (click)="trocaStatus(user)">
                         <span class="slider round"></span>
                     </label>
                 </td>
-                <td class="ultimo-td" id="excessao">
+                <td id="excessao">
                     <div class=container>
                         <!-- *********************** VISUALIZAR ******************************** -->
-                        <button id="visualization" type="submit" title="Visualizar cadastro" (click)="openVisualization(user._id)">
-                            <span class="fa fa-eye"></span>
+                        <button id="warning" type="submit" title="Visualizar cadastro" (click)="openVisualization(user._id)">
+                            <span class="fa fa-users"></span>
                         </button>
 
                         <ng-template #contentVisu let-c="close" let-d="dismiss">
                             <div class="modal-header">
                                 <button id="btnVisu" type="submit" (click)="addNewUser()" (click)="d('Cross click')">
-                                    <span class="fa fa-user-plus"></span>
+                                    <span class="fa fa-user-plus visu"></span>
                                 </button>
 
                                 <button id="btnVisu" type="submit" (click)="editUsers(user)" (click)="d('Cross click')">
-                                    <span class="fa fa-pencil-square-o"></span>
+                                    <span class="fa fa-pencil-square-o visu"></span>
                                 </button>
 
                                 <button id="btnVisu" type="submit" (click)="openDelete(content)" (click)="d('Cross click')">
-                                    <span class="fa fa-user-times"></span>
+                                    <span class="fa fa-user-times visu"></span>
                                 </button>
                                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                     <span aria-hidden="true">&times;</span>
@@ -86,13 +89,13 @@
                         </ng-template>
 
                         <!-- *********************** EDITAR ******************************** -->
-                        <button id="edit" type="submit" title="Editar Usuário" (click)="editUsers(user)">
+                        <button id="warning" type="submit" title="Editar Usuário" (click)="editUsers(user)">
                             <span class="fa fa-pencil"></span>
                         </button>
 
                         <!-- *********************** DELETAR ******************************** -->
-                        <button id="delete" type="submit" class="btn btn-primary" title="Deletar usuário" (click)="openDelete(content)">
-                            <span class="fa fa-trash"></span>
+                        <button id="danger" type="submit" class="btn btn-primary" title="Deletar usuário" (click)="openDelete(content)">
+                            <span class="fa fa-close"></span>
                         </button>
                     </div>
 
@@ -145,11 +148,11 @@
                         <div class="form-group mb-2">
                             <label style="margin-right:5px;">Exibir</label>
                             <select class="selectpicker form-control" #select (change)="quantPorPagina(select.value)">
-                                <option value="10"> 10 </option>
-                                <option value="15"> 15 </option>
-                                <option value="20"> 20 </option>
-                                <option value="25"> 25 </option>
-                                <option value="0"> todos </option>
+                                <option value="10"> 10</option>
+                                <option value="15"> 15</option>
+                                <option value="20"> 20</option>
+                                <option value="25"> 25</option>
+                                <option value="0"> todos</option>
                             </select>
                             <label style="margin-left:5px;">Registros</label>
                         </div>
@@ -160,6 +163,6 @@
     </div>
 </div>
 
-<div *ngIf="visualization">
+<!-- <div *ngIf="visualization">
     <app-system-users-visualization [id]="idVisualization" (close)="closeVisualization($event)"></app-system-users-visualization>
-</div>
+</div> -->

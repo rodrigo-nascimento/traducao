@@ -5,7 +5,7 @@ import { SystemUsersListRoutingModule } from './system-users-list-routing.module
 import { PageHeaderModule, StatModule } from '../../../shared/index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SystemUsersVisualizationComponent } from '../system-users-visualization/system-users-visualization.component';
+import { SystemUsersListGuard } from '../../../shared/guard/system-users-list.guard';
 
 
 @NgModule({
@@ -20,6 +20,8 @@ import { SystemUsersVisualizationComponent } from '../system-users-visualization
 
 
   ],
-  declarations: [SystemUsersListComponent, SystemUsersVisualizationComponent]
+  declarations: [SystemUsersListComponent],
+  
+
 })
 export class SystemUsersListModule { }

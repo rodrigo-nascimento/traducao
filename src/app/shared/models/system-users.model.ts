@@ -10,12 +10,19 @@ export class SystemUsers {
       
         public name: string,
         public email: string,
-        public login: string,
         public password: string,
         public lats_login: string,
         public documents: Array<UsersDocuments>,
         public address: Array<UsersAddress>,
         public phone: Array<UsersPhone>,
-        public active: boolean
+        public active: boolean,
+        
+        //*****Auditoria*****
+        public nameUser: string,
+        public numberCpfUser: string,
+        public date: Date,
+        public ipUser: string,
+        public session: string,
+        public description: String
     ) { }
 }

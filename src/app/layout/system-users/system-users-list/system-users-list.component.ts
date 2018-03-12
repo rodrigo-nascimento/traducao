@@ -24,6 +24,9 @@ export class SystemUsersListComponent implements OnInit {
   public closeResult: string;
   public contentVisu: string;
 
+  public userName: string;
+  public userCpf: string;
+
   public quantPorPage: number = 10;
   public listaDePaginacao: any = [];
   public numeroDaPagina: number;
@@ -37,57 +40,17 @@ export class SystemUsersListComponent implements OnInit {
     public route: ActivatedRoute,
     private modalService: NgbModal,
     private systemUsersService: SystemUsersService,
+    
 
   ) { }
 
 
   ngOnInit() {
+    this.userName = localStorage.getItem('name');
+    this.userCpf = localStorage.getItem('cpf');
+
     this.main(1);
   }
-
-  /* ************************* Busca **************************/
-
-  public search(option, filter) {
-
-    // if(this.apiUser.length === 0 || 
-    //   this.filtro === null      ||
-    //   this.filtro.trim() === '')
-    //   {
-    //   return this.apiUser;
-    // }
-
-    // return this.apiUser.filter((v) => {
-    //   if(v.toString().toLocaleLowerCase().indexOf(this.filtro.toLocaleLowerCase()) >= 0) {
-    //     return true;
-    //   }
-    //   return false;
-    // });
-    //-------------------------------------------------------------------------------------------
-
-
-    var objSearch: object = {
-      campo: option,
-      valor: filter
-    };
-
-    // console.log('option: ' + option);
-    // console.log('filter: ' + filter);
-
-    if (filter != 'INVALID') {
-
-      this.systemUsersService.search(this.token, objSearch)
-        .subscribe((apiResponse: SystemUsers[]) => {
-
-          this.apiUser = apiResponse;
-          this.main(1);
-        }
-      );
-
-    } else {
-      alert('tipo invalido');
-    }
-  }
-
 
   // Visualização do Usuário 
   public openVisualization(id): void {
@@ -126,8 +89,8 @@ export class SystemUsersListComponent implements OnInit {
   public listUsers(limit, pagina): void {
 
     let skip = ((pagina - 1) * this.quantPorPage);
-    
     const obj = {
+
       limit: limit,
       skip: skip
     };
@@ -172,9 +135,18 @@ export class SystemUsersListComponent implements OnInit {
     this.router.navigate(['/system-users/systemUsersEdit', userE._id]);
   }
 
+   date = new Date;
+  
   public deleteUser(user: SystemUsers): void {
 
-    this.systemUsersService.deleteUser(user._id, this.token)
+    user.nameUser = this.userName;
+    user.numberCpfUser = this.userCpf;
+    user.date = this.date;
+    user.ipUser = "192.168.1.1"
+    user.session = "USUARIO ADMINISTRATIVO";
+    user.description = "DELETOU USUARIO ADMINISTRATIVO";
+   
+    this.systemUsersService.deleteUser(user, this.token)
       .subscribe((apiResponse: SystemUsers) => {
 
         for (let i = 0; i < this.apiUser.length; i++) {
@@ -188,10 +160,10 @@ export class SystemUsersListComponent implements OnInit {
         }
 
       },
-        (error: any) => {
-          alert('Erro ao deletar o usuário')
-          if (error._body === '{"errors":["Não foi possível deletar o usuário."]}') { }
-        }
+      (error: any) => {
+        alert('Erro ao deletar o usuário')
+        if (error._body === '{"errors":["Não foi possível deletar o usuário."]}') { }
+      }
       );
   }
 
@@ -218,7 +190,11 @@ export class SystemUsersListComponent implements OnInit {
 
   public quantPorPagina(value: number): any {
 
-    if (value > this.totalDeUsuarios || value == 0) {
+    if (value > this.totalDeUsuarios) {
+      this.quantPorPage = this.totalDeUsuarios;
+      this.main(1);
+    }
+    else if (value === 0) {
       this.quantPorPage = this.totalDeUsuarios;
       this.main(1);
     }
@@ -245,4 +221,34 @@ export class SystemUsersListComponent implements OnInit {
 
   }
 
+
+  /* ************************* Busca **************************/
+
+  public search(field, value) {
+
+    var objSearch: object = {
+      campo: field,
+      valor: value
+    };
+
+
+    if (field != 'INVALID') {
+
+      this.systemUsersService.search(this.token, objSearch)
+      .subscribe((apiResponse: SystemUsers[]) => {
+          console.log(apiResponse)
+          this.apiUser = apiResponse;
+          console.log('apI');
+          console.log(this.apiUser);
+          this.carregarListaDePaginas();
+          /* CARREGA A LISTA DE PAGINAS MAS PRECISA ARRUMAR O TOTAL DE USUARIOS E COISAS DO TIPO */
+      });
+
+    } else {
+
+      alert('tipo invalido');
+
+
+    }
+  }
 }

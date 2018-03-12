@@ -20,11 +20,12 @@ export class SystemUsersHomeComponent implements OnInit {
 
   public listUsers(): void {
 
-    this.systemUsersService.countUser(this.token)
+  /*   this.systemUsersService.countUser(this.token)
     .subscribe((apiResponse: number) => { 
       this.router.navigate(['/system-users/systemUsersList'], {queryParams: {contador : apiResponse}});
-    }); 
+    });  */
 
+    this.router.navigateByUrl('/system-users/systemUsersList');
   }
   
   public addNewUser(): void {

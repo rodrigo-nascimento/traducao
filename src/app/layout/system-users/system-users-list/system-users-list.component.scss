@@ -1,70 +1,141 @@
-
-$topnav-background-color: #18638c;
-
 /***************( Table )******************/
-
+#teste{
+  margin-left: 50px;
+}
 table {
   margin: 15px 0 30px 0;
   width: 100%;
   font-size: 13px;
+  display: table;
 }
 
 th {
-  height: 45px;
-  font-size: 17px;
+  height: 40px;
+  font-size: 14px;
   color: #fff;
-  padding-left: 10px;
-  background-color: $topnav-background-color;
+  border-bottom: 3px solid #fff;
+  padding-left: 5px;
+  background-color: #18638c;
 }
 
-tr {
-  background-color: rgb(255, 255, 255);
-}
 
 td {
   height: 35px;
-  font-size: 16px;
   color: rgb(80, 80, 80);
-  border-bottom: 1px solid $topnav-background-color;
-  padding-left: 10px;
+  border-bottom: 2px solid #3886af;
+  padding-left: 5px;
   background-color: rgba(0,0,0,0);
 }
 
-#excessao {
+
+#ultimo {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   text-align: center;
 }
 
-  #delete, #edit, #visualization {
-    position: relative;
-    margin-right: 10px;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
+#primeiro{
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+
+  .linha{
+    width: 100%;
+    border: 1px solid rgb(230, 17, 17);
+    margin-left: 10px;
+  }
+
+
+  .visu{
+    font-size: 3em;
+    color: white;
+  }
+  hr{
+    color: rgb(80, 80, 80);
+    border-bottom: 2px solid #3886af;
+    padding-left: 5px;
+    background-color: rgba(0,0,0,0);
+  }
+
+.col-form-label{
+    font-size: 14px;
+    margin-left: 1%;
+    font-weight: bold;
+}
+ #name{
+  width: 98%;
+  margin-left: 1%;
+ }
+  .form-control-plaintext{
+    width: 70%;
+    margin-left: 1%;
+    text-align: justify;
+  }
+
+  #complementR, #complementC{
+    margin-left: 45%;
+  }
+
+  #numberR, #numberC{
+    margin-left: 20%;
+  }
+ 
+  #phoneComercial, #phoneRecado, #streetR, #stateR, #cityR, #cityC, #streetC, #stateC{
+    margin-left: 10%;
+  }
+
+ 
+.title{
+    text-align: center;
+    color: #fff;
+    border-bottom: 3px solid #fff;
+    padding-left: 5px;
+    background-color: #18638c;
+    border-radius: 10px;
+}
+
+
+#excessao {
+    border-right: none;
+    text-align: center;
+}
+
+#teste{
+  height: 200%;
+}
+
+
+  #warning, #danger {
+    width: 42px;
+    height: 41px;
+    color: #fff;
+    border-radius: 40px;
     border: none;
-    background-color: $topnav-background-color;
-    padding: 0px;
     cursor: pointer;
   }
-
-  .fa-eye, .fa-pencil, .fa-trash {
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    text-align: center;
-  }  
-
-  .fa-trash {
-    margin-left: 4px;
+  .fa{
+    font-size: 1.5em;
   }
 
-  #primeiro-th {
-    border-top-left-radius: 9px;
+  #warning{
+    margin-right: 10px;
+    background-color: #3886af;
   }
-  
-  #ultimo-th {
-    border-top-right-radius: 9px;
-    text-align: center;
+
+  #warning:hover{
+    background-color: #44ABDF;
   }
-  
+
+
+  #danger{
+    background-color: #3886af;
+  }
+
+  #danger:hover{
+    background-color: #44ABDF;
+  }
+
   /**************( Pagination )**************/
  
   ul{
@@ -115,6 +186,7 @@ td {
   }
 }
 
+
 #confirmar{
   background-color: #3886af;
 }
@@ -122,6 +194,48 @@ td {
 #cancelar{
   background-color: #3886af;
 }
+
+
+#containerVisualization{
+ text-align: center;
+ align-content: center;
+}
+
+
+//
+
+.testimonial-card{
+
+  .label{
+    font-weight: bold;
+  }
+  .form-control-sm{
+
+    margin-top: -5px;
+  }
+
+  .row-adicionais{
+    margin-top: -5px;
+  }
+
+  hr{
+    height: -20px;
+  }
+
+  .col{
+
+    margin: 5px;
+  }
+}
+#containerHeader{
+  height: 50px;
+  background-color: blue;
+
+  app-page-header{
+    width: 10px;
+  }
+}
+
 
 // ************ VALIDAR (Habilitado/Desabilitado) *************
 
@@ -159,7 +273,7 @@ td {
 }
 
 input:checked + .slider {
-  background-color: $topnav-background-color;
+  background-color: #2481b3;
 }
 
 input:checked + .slider:before {
@@ -177,8 +291,10 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+
+
 .navbar{
-  margin-top:-10px;
+  margin-top:10px;
   margin-bottom:-12px;
   padding: 2px;
 }
@@ -187,12 +303,6 @@ input:checked + .slider:before {
   background-color: #18638c;
 }
 
-.row {
-  padding-top: 10px;
-  margin-left: 0px;
-  width: 100%;
-  height: 60px;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0);
+.col{
+  margin: 3px;
 }
-

@@ -6,6 +6,7 @@ import { SystemUsersComponent } from './system-users.component';
 import { PageHeaderModule } from './../../shared';
 import { StatModule } from '../../shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SystemUsersListGuard } from '../../shared/guard/system-users-list.guard';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       ReactiveFormsModule
  
     ],
-  declarations: [SystemUsersComponent]
+  declarations: [SystemUsersComponent],
+  providers:[SystemUsersListGuard]
 })
 export class SystemUsersModule { }

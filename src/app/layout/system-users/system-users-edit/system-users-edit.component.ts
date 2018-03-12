@@ -21,7 +21,7 @@ export class SystemUsersEditComponent implements OnInit {
   public token: string = localStorage.getItem('token');
   public id: string;
   public user: SystemUsers;
-  public inscricao: Subscription; //queryParams retorna inscrição
+  public inscricao: Subscription;
   private idPhoneAtual = 0;
   private idEnderecoAtual = 0;
   public phones = [];
@@ -29,6 +29,14 @@ export class SystemUsersEditComponent implements OnInit {
   public errorAddress: boolean = false;
   public textErrorAddress: string = "";
   public formEditUser;
+
+  public userName: string;
+  public userCpf: string;
+
+  public personalData: boolean = true;
+  public addresses: boolean = false;
+  public contacts: boolean = false;
+  public permissions: boolean = false;
 
   constructor(public route: ActivatedRoute, public router: Router, private systemUsersService: SystemUsersService, private maskService: MaskService) {
     this.formEditUser = new FormGroup({
@@ -45,11 +53,13 @@ export class SystemUsersEditComponent implements OnInit {
 
   ngOnInit() {
 
-    this.route.queryParams.subscribe(
-      (queryParams: any) => {
-        this.id = queryParams['id']
-      }
-    );
+    this.userName = localStorage.getItem('name');
+    this.userCpf = localStorage.getItem('cpf');
+
+    // inscricao para escutar mudanças na rota 
+    this.inscricao = this.route.params.subscribe((params: any) => {
+      this.id = params['id'];
+    });
 
     this.systemUsersService.getUser(this.id, this.token)
       .subscribe((userEdit: SystemUsers) => {
@@ -71,6 +81,8 @@ export class SystemUsersEditComponent implements OnInit {
       });
   }
   ngOnDestroy() {
+    //desinscrevendo da inscrição
+    this.inscricao.unsubscribe();
   }
 
   /* ---------------------- Utilitários --------------------------------------- */
@@ -89,6 +101,45 @@ export class SystemUsersEditComponent implements OnInit {
     } else {
       this.formEditUser.controls.active.setValue("ATIVADO");
     }
+  }
+
+  public openVisualizationForms(step, action) {
+
+    if (step == 'personalData' && action == 'next') {
+
+      this.personalData = false;
+      this.addresses = true;
+
+    } else if (step == 'addresses') {
+
+      this.addresses = false;
+
+      if (action == 'previous') {
+        this.personalData = true;
+      } else if (action == 'next') {
+        this.contacts = true;
+      }
+
+    } else if (step == 'contacts') {
+
+      this.contacts = false;
+
+      if (action == 'previous') {
+        this.addresses = true;
+      } else if (action == 'next') {
+        this.permissions = true;
+      }
+
+    } else if (step == 'permissions') {
+
+      this.permissions = false;
+
+      if (action == 'previous') {
+        this.contacts = true;
+      }
+
+    }
+
   }
   /* ------------------------- Validação CPF e EMAIL ------------------------------ */
 
@@ -303,19 +354,29 @@ export class SystemUsersEditComponent implements OnInit {
 
     }
 
-    this.user.name = this.formEditUser.value.name,
-      this.user.email = this.formEditUser.value.email;
-      this.user.active = this.formEditUser.active;
+    var date = new Date;
+
+    this.user.name = this.formEditUser.value.name;
+    this.user.email = this.formEditUser.value.email;
+    this.user.active = this.formEditUser.active;
     this.user.documents = [
       { name: "CPF", value: this.formEditUser.value.cpf },
       { name: "RG", value: this.formEditUser.value.rg }
     ];
     this.user.address = address;
     this.user.phone = phones;
+    this.user.nameUser = this.userName;
+    this.user.numberCpfUser = this.userCpf;
+    this.user.date = date;
+    this.user.ipUser = "193.168.1.1";  // Terá que ver um jeito de pegar o IP da maquina do usuario
+    this.user.session = "USUARIO ADMINISTRATIVO"; // Terá que ver um jeito de pegar a sessão que o usuario está utilizando
+    this.user.description = "EDITOU USUARIO ADMINISTRATIVO" ; // TESTE: + this.user.name + "CPF: " + this.formEditUser.value.cpf // Ficará fixo, pois todas as funções do CRUD terá, então é só alterar em cada função
 
 
     this.systemUsersService.editUser(this.user, this.token)
       .subscribe((apiResponse: SystemUsers) => {
+
+        console.log(this.user)
 
         alert('Usuário editado com sucesso!');
         this.router.navigateByUrl('/system-users/systemUsersList');
