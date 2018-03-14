@@ -306,8 +306,8 @@ export class NewSystemUserComponent implements OnInit {
       this.formNewUser.value.password,
       '',
       [
-        { name: "CPF", value: this.formNewUser.value.cpf },
-        { name: "RG", value: this.formNewUser.value.rg }
+        { name: "CPF", value: this.formNewUser.value.cpf, expeditionDate: null, state: null},
+        { name: "RG", value: this.formNewUser.value.rg, expeditionDate: null, state: null }
       ],
       address,
       phones,

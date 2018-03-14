@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+/* import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SystemUsersVisualizationComponent } from './system-users-visualization.component';
 
@@ -16,3 +16,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class SystemUsersVisualizationRoutingModule { }
+ */

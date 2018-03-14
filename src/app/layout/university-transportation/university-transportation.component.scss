@@ -1,239 +1,264 @@
-h1,h2,h3,h4{
-    font-family: Catamaran,Helvetica,Arial,sans-serif;
-    font-weight: 200;
-    letter-spacing: 1px;
-}
-.text-secondary {
-    color: #2c3e50!important;
-}
-.form-control {
-    display: block;
-    width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-.floating-label-form-group {
-    position: relative;
-    border-bottom: 1px solid #e9ecef;
-}
-.floating-label-form-group input, .floating-label-form-group textarea {
-    font-size: 1.5em;
-    position: relative;
-    z-index: 1;
-    padding-right: 0;
-    padding-left: 0;
-    resize: none;
-    border: none;
-    border-radius: 0;
-    background: 0 0;
-    box-shadow: none!important;
-}
-.card label {
-    font-size: 14px;
-    font-weight: 400;
-    color: #4d4848;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-}
- //arrumar 
-.card{
-    border : none;
-    margin-left: -15px;
-} 
-.card-header{
-    background-color:#18638c;
-    height: 50px;
-    text-transform: uppercase;
-    color: white;
-    text-align: center;
-}
-.table{
-    font-size: 14px;
-    td , #periodosOnibus{
-        text-align: center;
+li.is-complete::after{
+    background-color: red;
    }
-    .form-check-input{
-        width: 15px;
-        height: 15px;
+   h1,h2,h3,h4{
+       font-family: Catamaran,Helvetica,Arial,sans-serif;
+       font-weight: 200;
+       letter-spacing: 1px;
    }
-}
-* {
-    box-sizing: border-box;
-}
-body {
-    background: #efefef;
-}
- .wrapper {
-    width: 96%;
-    background: rgba(228, 230, 231, 0);
-    margin: 2% auto;
-    padding: 1.5em;
-    box-shadow: 0px 1px 3px #ddd;
-    margin-bottom: 0px;
-    padding-bottom: 8px;
-}
-
-.container{
-    margin: 2% auto;
-    padding: 1.5em;
-}
-ul {
-    list-style-type: none;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-p, li, a{
-    font-size: 16px;
-}
-/* STEPS */
-.steps{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-    text-align: center;
-}
-.steps li{
-    float: left;
-    // display: inline-block;
-    margin: 20px;
-    color: #ccc;
-    padding-bottom: 5px;
-}
-.steps li.is-active{
-    border-bottom: 1px solid #3498db;
-    color: #3498db;
-}
-button{
-    border-radius: 5%;
-}
-hr.header{
-    border : 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-/* hr {
-    height: 10px;
-    border: 0;
-    box-shadow: 0 10px 10px -10px #8c8c8c inset;
-}
-*/
-
-
-// dddddddddddddddddd
-
-.rvt-steps {
-    list-style: none;
-    counter-reset: step;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-    position: relative;
-        
-    &__label {
-        margin-top: .5rem;
-        display: inline-block;
-    }
-    
-    li {
-        text-align: center;
-        flex-grow: 1;
-        position: relative;
-        z-index: 2;
-        
-        &:after {
-            content: " ";
-            display: block;
-            height: .125rem;
-            background-color: #eee;
-            position: relative;
-            /**
-             * NOTE:
-             *
-             * Setting a specific position like this seems fragile.
-             * I wonder if there's a better way to do this?
-             */
-            top: -3.75rem;
-            z-index: 0;
-        }
-        
-        &:first-child:after {
-            width: 50%;
-            left: 50%;
-        }
-        
-        &:last-child:after {
-            width: 50%;
-        }
-        
-        &:before {
-            z-index: 999;
-            position: relative;
-            counter-increment: step;
-            content: counter(step);
-            display: block;
-            width: 2rem;
-            height: 2rem;
-            text-align: center;
-            border-radius: 50%;
-            border: 2px solid #aaa;
-            background-color: #eeeeee;
-
-            margin-right: auto;
-            margin-left: auto;
-        }
-        
-        a {
-            color: #333;
-            text-decoration: none;
-            
-            &:hover span {
-                text-decoration: underline;
-            }
-        }
-    }
-    
-    .is-complete {     
-        &:before {
-            border-color: #008a28;
-            content: " ";
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiMwMDhhMjgiIGQ9Ik02LjcyLDEzbC0uNDgtLjM2LTMtM0ExLDEsMCwwLDEsNC43MSw4LjI5bDIuMTEsMi4xMiw0LjMzLTYuOTRhMSwxLDAsMCwxLDEuNywxLjA2TDcuNjQsMTIuODdaIi8+Cjwvc3ZnPgo=");
-            background-color: #ddf4ea;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: 20px 20px;
-        }    
-    }
-    
-    .has-error {
-        
-        &:before {
-            border-color: #df3603;
-            content: " ";
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDx0aXRsZT5FeGNsYW1hdGlvbiBpY29uPC90aXRsZT4KICAgIDxnIGZpbGw9IiNkZjM2MDMiPgogICAgICAgIDxwYXRoIGQ9Ik04LDExYTEsMSwwLDAsMS0xLTFWM0ExLDEsMCwwLDEsOSwzdjdBMSwxLDAsMCwxLDgsMTFaIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iOCIgY3k9IjEzIiByPSIxIi8+CiAgICA8L2c+Cjwvc3ZnPgo=");
-            background-color: #fdeee8;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: 20px 20px;
-        }
-    }
-    
-    .is-current {
-        font-weight: 700;
-        
-        &:before {
-            background-color: #006298;
-            color: #fff;
-        }
-    }
-}
+   
+   .text-secondary {
+       color: #2c3e50!important;
+   }
+   .form-control {
+       display: block;
+       width: 100%;
+       padding: .375rem .75rem;
+       font-size: 1rem;
+       line-height: 1.5;
+       color: #495057;
+       background-color: #fff;
+       background-clip: padding-box;
+       border: 1px solid #ced4da;
+       border-radius: .25rem;
+       transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+   }
+   .floating-label-form-group {
+       position: relative;
+       border-bottom: 1px solid #e9ecef;
+   }
+   .floating-label-form-group input, .floating-label-form-group textarea {
+       font-size: 1.5em;
+       position: relative;
+       z-index: 1;
+       padding-right: 0;
+       padding-left: 0;
+       resize: none;
+       border: none;
+       border-radius: 0;
+       background: 0 0;
+       box-shadow: none!important;
+   }
+   .card label {
+       font-size: 14px;
+       font-weight: 400;
+       color: #4d4848;
+       margin-bottom: 5px;
+       text-transform: uppercase;
+   }
+    //arrumar 
+   .card{
+       border : none;
+       margin-left: -15px;
+   } 
+   .card-header{
+       background-color:#18638c;
+       height: 50px;
+       text-transform: uppercase;
+       color: white;
+       text-align: center;
+   }
+   .table{
+       font-size: 14px;
+       td , #periodosOnibus{
+           text-align: center;
+      }
+       .form-check-input{
+           width: 15px;
+           height: 15px;
+      }
+   }
+   * {
+       box-sizing: border-box;
+   }
+   body {
+       background: #efefef;
+   }
+    .wrapper {
+       width: 96%;
+       background: rgba(228, 230, 231, 0);
+       margin: 2% auto;
+       padding: 1.5em;
+       box-shadow: 0px 1px 3px #ddd;
+       margin-bottom: 0px;
+       padding-bottom: 8px;
+   
+   }
+   
+   .container{
+       margin: 2% auto;
+       padding: 1.5em;
+   }
+   ul {
+       list-style-type: none;
+       overflow: hidden;
+       margin: 0;
+       padding: 0;
+   }
+   p, li, a{
+       font-size: 16px;
+   }
+   /* STEPS */
+   .steps{
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       background-color: #fff;
+       text-align: center;
+   }
+   .steps li{
+       float: left;
+       // display: inline-block;
+       margin: 20px;
+       color: #ccc;
+       padding-bottom: 5px;
+   }
+   .steps li.is-active{
+       border-bottom: 1px solid #3498db;
+       color: #3498db;
+   }
+   
+   button{
+       border-radius: 5%;
+   }
+   hr.header{
+       border : 0;
+       height: 1px;
+       background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+   }
+   /* hr {
+       height: 10px;
+       border: 0;
+       box-shadow: 0 10px 10px -10px #8c8c8c inset;
+   }
+   */
+   
+   
+   // dddddddddddddddddd
+   
+   .rvt-steps {
+       list-style: none;
+       counter-reset: step;
+       display: flex;
+       justify-content: space-between;
+       flex-wrap: wrap;
+       margin: 0;
+       padding: 0;
+       position: relative;
+           
+       &__label {
+           margin-top: .5rem;
+           display: inline-block;
+       }
+       
+       li {
+           text-align: center;
+           flex-grow: 1;
+           position: relative;
+           z-index: 2;
+           
+           //cor barra li complete
+           &.is-complete:after{
+               background-color: green;
+           }
+           // cor barra li has error
+           &.has-error:after{
+               background-color: #df3603;
+           }
+           &:after {
+               content: " ";
+               display: block;
+               height: .2rem; // largura da barra 
+               background-color: #eee;
+               position: relative;
+               /**
+                * NOTE:
+                *
+                * Setting a specific position like this seems fragile.
+                * I wonder if there's a better way to do this?
+                */
+                // posição da barra 
+               top: -3.0rem;
+               z-index: 0;
+           }
+           
+           &:first-child:after {
+               width: 50%;
+               left: 50%;
+           }
+           
+           &:last-child:after {
+               width: 50%;
+           }
+           
+           &:before {
+               z-index: 999;
+               position: relative;
+               counter-increment: step;
+               content: counter(step);
+               display: block;
+               width: 2rem;
+               height: 2rem;
+               text-align: center;
+               border-radius: 50%;
+           
+               border: 2px solid #aaa;
+               background-color: #eeeeee;
+   
+               margin-right: auto;
+               margin-left: auto;
+           }
+           
+           a {
+               color: #333;
+               text-decoration: none;
+               
+               &:hover span {
+                   text-decoration: underline;
+               }
+           }
+       }
+       
+       .is-complete {
+           &:before {
+               border-color: #008a28;
+               color: #fff;
+               //content: " ";
+               //background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiMwMDhhMjgiIGQ9Ik02LjcyLDEzbC0uNDgtLjM2LTMtM0ExLDEsMCwwLDEsNC43MSw4LjI5bDIuMTEsMi4xMiw0LjMzLTYuOTRhMSwxLDAsMCwxLDEuNywxLjA2TDcuNjQsMTIuODdaIi8+Cjwvc3ZnPgo=");
+               background-color: #008a28;
+               background-repeat: no-repeat;
+               background-position: 50% 50%;
+               background-size: 20px 20px;
+           }    
+       }
+       
+       .has-error {
+           
+           &:before {
+               color: #fff;
+               border-color: #df3603;
+              // content: " ";
+               //background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDx0aXRsZT5FeGNsYW1hdGlvbiBpY29uPC90aXRsZT4KICAgIDxnIGZpbGw9IiNkZjM2MDMiPgogICAgICAgIDxwYXRoIGQ9Ik04LDExYTEsMSwwLDAsMS0xLTFWM0ExLDEsMCwwLDEsOSwzdjdBMSwxLDAsMCwxLDgsMTFaIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iOCIgY3k9IjEzIiByPSIxIi8+CiAgICA8L2c+Cjwvc3ZnPgo=");
+              // background-color: #fdeee8;
+              background-color:   #df3603;
+               background-repeat: no-repeat;
+               background-position: 50% 50%;
+               background-size: 20px 20px;
+           }
+       }
+       
+       .is-current {
+          // box-shadow: inset 0 0 0 3px #6a3;
+           
+           font-weight: 700;
+           
+           &:before {
+               border: 2.5px solid #006298;
+               background-color: #006298;
+               color: #fff;
+           }
+       }
+   }
+   
+   
+   

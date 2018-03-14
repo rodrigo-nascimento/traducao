@@ -1,395 +1,477 @@
-<div style="text-align:center" >
-    <h4 style="margin-bottom:-10px;margin-top:20px;">CADASTRO TRANSPORTE UNIVERSITÁRIO</h4>
-</div>
-
+<!-- <div style="text-align:center">
+  <h4 style="margin-bottom:-10px;margin-top:20px;">CADASTRO TRANSPORTE UNIVERSITÁRIO</h4>
+</div> -->
 
 <div class="wrapper">
- <!-- 
-  <ul class="steps">
-    <li [class.is-active]="visualizationPessoais">Dados Pessoais</li>
-    <li [class.is-active]="visualizationEnd">Endereço</li>
-    <li [class.is-active]="visualizationInsti">Informação da Instituição</li>
-    <li [class.is-active]="visualizationDoc">Importação de Documentos</li>
-  </ul> -->
-<!--   <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-    </div>
- 
- -->
+  
     <div class="rvt-container rvt-container--center rvt-container--sophomore rvt-m-top-xxl" style="margin-left:-60px">
- <!--  
-        
-        <h2 class="rvt-ts-26 rvt-m-bottom-lg">
-            Mixed state
-            <span class="rvt-ts-16 rvt-display-block">(success, errors, etc.)</span>
-        </h2> -->
-        <ol class="rvt-steps">
-            <li class="is-complete">
-                <a href="#0">
-                    <span class="rvt-sr-only">Completed:</span>
-                    <span class="rvt-steps__label">Personal info</span>
-                </a>
-            </li>
-            <li class="has-error">
-                <a href="#0">
-                    <span class="rvt-sr-only">Error:</span>
-                    <span class="rvt-steps__label">Address</span>
-                </a>
-            </li>
-            <li class="is-complete">
-                <a href="#0">
-                    <span class="rvt-steps__label">Eductation history</span>
-                </a>
-            </li>
-            <li class="is-current">
-                <span class="rvt-steps__label">Review</span>
-            </li>
-            <li>
-                <span class="rvt-steps__label">Submit</span>
-            </li>
-        </ol>
+   
+      <ol class="rvt-steps">
+        <li [class]="classPersonalData">
+          <a href="#0">
+  
+            <span class="rvt-steps__label">Dados Pessoais</span>
+          </a>
+        </li>
+        <li [class]="classAddress">
+          <a href="#0">
+  
+            <span class="rvt-steps__label">Endereço</span>
+          </a>
+        </li>
+        <li [class]="classInstitution">
+          <a href="#0">
+  
+            <span class="rvt-steps__label">Dados da Instituição</span>
+          </a>
+        </li>
+        <li [class]="classDocuments">
+  
+          <span class="rvt-steps__label">Importação de Documentos</span>
+        </li>
+        <li>
+          <span class="rvt-steps__label">Salvar</span>
+        </li>
+      </ol>
     </div>
-    
-  <div class="content" style=" margin-top: 10px;">
-
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <form novalidate role="form" [formGroup]="formNewUser" >
-                <div class="form-content">
-                  <!--********************************DADOS PESSOAS******************************* -->
-                  <div *ngIf="visualizationPessoais">
-                    <div class="row justify-content-end" style="margin-bottom:-3em">
-                      <div class="col-4" style="margin-right: 5px; font-size:16px; font-weight:bold">
-                        Passo 1
-                        <hr>
-                      </div>
-                    </div>
- 
-                    <div class="row">
-                      <div class="form-group col-md-4">
-                        <fieldset class="form-group">
-                          <label class="radio-inline">
-                            <input class="ng-tns-c9-2" checked="" id="optionsRadiosInline1" name="optionsRadiosInline" type="radio" value="option1">Estudante
-                          </label>
- 
-                          <label class="radio-inline">
-                            <input class="ng-tns-c9-2" id="optionsRadiosInline2" name="optionsRadiosInline" type="radio" value="option2"> Professor
-                          </label>
-                        </fieldset>
-                      </div>
-                    </div>
- 
-                    <div class="row">
-                      <div class="form-group col-md-12">
-                        <label class="control-label">Nome Completo</label>
-                        <input aria-describedby="addon-right addon-left" type="text" placeholder="Fulano de Tal" class="form-control" formControlName="name"
-                          d>
-                      </div>
-                    </div>
- 
- 
-                    <div class="row">
-                      <div class="form-group col-md-6">
-                        <label class="control-label">RG</label>
-                        <input aria-describedby="addon-right addon-left" type="text" disabled="disabled" class="form-control">
-                      </div>
- 
-                      <div class="form-group col-md-2">
-                        <label class="control-label">UF</label>
-                        <input aria-describedby="addon-right addon-left" type="text" class="form-control">
-                      </div>
- 
-                      <div class="form-group col-md-4">
-                        <label class="control-label">Data de Expedição</label>
-                        <input aria-describedby="addon-right addon-left" type="email" class="form-control">
-                      </div>
-                    </div>
- 
-                    <div class="row">
-                      <div class="form-group col-md-6">
-                        <label class="control-label">CPF</label>
-                        <input aria-describedby="addon-right addon-left" type="text" disabled="disabled" class="form-control">
-                      </div>
- 
-                      <div class="form-group col-md-6">
-                        <label class="control-label">Tipo Sanguíneo</label>
- 
-                        <select class="custom-select col-md-6">
-                          <option value="INVALID" selected>Escolha um tipo</option>
-                          <option value="RESIDENCIAL">A+</option>
-                          <option value="COMERCIAL">A-</option>
-                          <option value="CELULAR">B+</option>
-                          <option value="FIXO-RECADO">B-</option>
-                          <option value="CELULAR-RECADO">AB+</option>
-                          <option value="CELULAR-RECADO">AB-</option>
-                          <option value="CELULAR-RECADO">O+</option>
-                          <option value="CELULAR-RECADO">O-</option>
-                          <option value="CELULAR-RECADO">NÃO SEI INFORMAR</option>
-                        </select>
-                      </div>
-                    </div>
- 
-                    <div class="row">
-                      <div class="form-group col-md-6">
-                        <label class="control-label">Nome da Mãe</label>
-                        <input aria-describedby="addon-right addon-left" type="text" placeholder="Fulano de Tal" class="form-control">
-                      </div>
- 
-                      <div class="form-group col-md-6">
-                        <label class="control-label">Telefone para Contato</label>
-                        <input aria-describedby="addon-right addon-left" type="text" placeholder="Fulano de Tal" class="form-control">
-                      </div>
-                    </div>
- 
-                    <div class="text-center">
-                      <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('personalData', 'next')">Proximo</button>
-                    </div>
-                  </div>
- 
-                  <!--********************************ENDEREÇOS******************************* -->
-                  <div *ngIf="visualizationEnd">
-                    <div class="row justify-content-end">
-                      <div class="col-4" style="margin-bottom: 5px; font-size:16px; font-weight:bold">
-                        Passo 2
-                        <hr>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group col-md-6">
-                        <label class="control-label">Logradouro</label>
-                        <input aria-describedby="addon-right addon-left" type="text" class="form-control">
-                      </div>
- 
-                      <div class="form-group col-md-2">
-                        <label class="control-label">Nº</label>
-                        <input aria-describedby="addon-right addon-left" type="text" class="form-control">
-                      </div>
- 
-                      <div class="form-group col-md-4">
-                        <label class="control-label">Bairro</label>
-                        <input aria-describedby="addon-right addon-left" type="text" class="form-control">
-                      </div>
- 
- 
-                    </div>
-                    <div class="text-center">
-                      <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('address', 'previous')">Anterior</button>
-                      <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('address', 'next')">Proximo</button>
-                    </div>
-                  </div>
- 
-                  <!--********************************DADOS DA INSTITUIÇÃO******************************* -->
-                  <div *ngIf="visualizationInsti">
-                    <div class="row justify-content-end">
-                      <div class="col-4" style="margin-bottom: 5px; font-size:16px; font-weight:bold">
-                        Passo 3
-                        <hr>
-                      </div>
-                    </div>
-                    <div class="row">
- 
-                      <div class="form-group col-md-6">
-                        <label class="control-label">Nome da Instituição</label>
- 
-                        <select class="custom-select col-md-6">
-                          <option value="INVALID" selected>Escolha um nome</option>
-                          <option value="RESIDENCIAL">UFMS</option>
-                          <option value="COMERCIAL">IFMS</option>
-                          <option value="CELULAR">AEMS</option>
-                          <option value="FIXO-RECADO">FUNEC</option>
-                          <option value="CELULAR-RECADO">FEA</option>
-                          <option value="CELULAR-RECADO">AB-</option>
-                          <option value="CELULAR-RECADO">FIU</option>
-                          <option value="CELULAR-RECADO">FIRB</option>
-                        </select>
- 
-                      </div>
- 
-                      <div class="form-group col-md-6">
-                        <label class="control-label">Cidade da Instituição</label>
- 
-                        <select class="custom-select col-md-6">
-                          <option value="INVALID" selected>Escolha uma cidade</option>
-                          <option value="RESIDENCIAL">TRÊS LAGOAS - MS </option>
-                          <option value="COMERCIAL">PEREIRA BARRETO - SP</option>
-                          <option value="CELULAR">ANDRADINA - SP</option>
-                          <option value="FIXO-RECADO">SANTA FÉ DO SUL - SP</option>
-                        </select>
-                      </div>
-                    </div>
- 
-                    <div class="row">
-                      <div class="form-group col-md-7">
-                        <label class="control-label">Nome do Curso</label>
-                        <input aria-describedby="addon-right addon-left" type="text" disabled="disabled" class="form-control">
-                      </div>
- 
-                      <div class="form-group col-md-2">
-                        <label class="control-label">Ano de Início</label>
-                        <input aria-describedby="addon-right addon-left" type="text" class="form-control">
-                      </div>
- 
-                      <div class="form-group col-md-3">
-                        <label class="control-label">Previsão de Término</label>
-                        <input aria-describedby="addon-right addon-left" type="email" class="form-control">
-                      </div>
-                    </div>
- 
-                    <br>
- 
-                    <div class="row">
-                      <div class="form-group col-md-6">
- 
-                        <label>Perído de Ida</label>
- 
-                        <div class="table-responsive">
-                          <table class="table table-md">
-                            <thead>
-                              <tr id="periodosOnibus">
-                                <th scope="col"></th>
-                                <th scope="col">Manhã - 7h </th>
-                                <th scope="col">Tarde - 13h</th>
-                                <th scope="col">Noite - 18h40</th>
-                                <th scope="col">Não Vou</th>
-                              </tr>
-                            </thead>
- 
-                            <tbody>
-                              <tr *ngFor="let day of daysOfTheWeek">
-                                <th scope="row">{{day}}</th>
-                                <td>
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </td>
-                                <td>
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </td>
-                                <td>
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </td>
-                                <td>
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+  
+    <div class="content" style=" margin-top: 10px;">
+  
+  
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <form novalidate role="form" [formGroup]="formNewUser" (ngSubmit)="onSubmit()">
+                  <div class="form-content">
+                    <!--********************************DADOS PESSOAS******************************* -->
+                    <div *ngIf="visualizationPessoais" formGroupName="personalData">
+                      <div class="row justify-content-end" style="margin-bottom:-3em">
+                        <div class="col-4" style="margin-right: 5px; font-size:16px; font-weight:bold">
+                          Passo 1
+                          <hr>
                         </div>
                       </div>
- 
-                      <div class="form-group col-md-6">
- 
-                        <label>Perído de Volta</label>
- 
-                        <div class="table-responsive">
-                          <table class="table table-md">
-                            <thead>
-                              <tr id="periodosOnibus">
-                                <th scope="col"></th>
-                                <th scope="col">Manhã - 12h </th>
-                                <th scope="col">Tarde - 17h30</th>
-                                <th scope="col">Noite - 23h40</th>
-                                <th scope="col">Não Vou</th>
-                              </tr>
-                            </thead>
- 
-                            <tbody>
-                              <tr *ngFor="let day of daysOfTheWeek">
-                                <th scope="row">{{day}}</th>
-                                <td>
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </td>
-                                <td>
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </td>
-                                <td>
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </td>
-                                <td>
-                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+  
+                      <div class="row">
+                        <div class="form-group col-md-4">
+                          <fieldset class="form-group">
+                            <label class="radio-inline">
+                              <input class="ng-tns-c9-2" type="checkbox" formControlName="student">Estudante
+                            </label>
+  
+                            <label class="radio-inline">
+                              <input class="ng-tns-c9-2" type="checkbox" formControlName="teacher"> Professor
+                            </label>
+                          </fieldset>
                         </div>
                       </div>
+                      <!-- gambi -->
+                      <div class="row" style="margin-top : -7px">
+                        <div class="form-group col-md-12">
+                          <label class="control-label">Nome Completo</label>
+                          <input aria-describedby="addon-right addon-left" type="text" placeholder="Fulano de Tal" class="form-control" [class.is-invalid]="formNewUser.get('personalData').get('name').touched && formNewUser.get('personalData').get('name').invalid"
+                            formControlName="name">
+                          <small *ngIf="formNewUser.get('personalData').get('name').valid && formNewUser.get('personalData').get('name').touched" class="form-text text-success">Nome válido</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('name').valid && formNewUser.get('personalData').get('name').touched"
+                            class="form-text text-danger">Nome inválido - Favor informar nome, sobrenome e não utilizar números ou caracteres especiais!
+                          </small>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="form-group col-md-12">
+                          <label class="control-label">E-mail</label>
+                          <input aria-describedby="addon-right addon-left" type="text" placeholder="example@email.com" class="form-control" [class.is-invalid]="formNewUser.get('personalData').get('email').touched && formNewUser.get('personalData').get('email').invalid"
+                            formControlName="email">
+                          <small *ngIf="formNewUser.get('personalData').get('email').valid && formNewUser.get('personalData').get('email').touched"
+                            class="form-text text-success">E-mail válido</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('email').valid && formNewUser.get('personalData').get('email').touched"
+                            class="form-text text-danger">E-mail inválido!
+                          </small>
+                        </div>
+                      </div>
+  
+                      <div class="row" formGroupName="rg">
+                        <div class="form-group col-md-6">
+                          <label class="control-label">RG</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="number">
+                          <small *ngIf="formNewUser.get('personalData').get('rg').get('number').valid && formNewUser.get('personalData').get('rg').get('number').touched"
+                            class="form-text text-success">RG válido</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('rg').get('number').valid && formNewUser.get('personalData').get('rg').get('number').touched"
+                            class="form-text text-danger">RG inválido
+                          </small>
+                        </div>
+  
+                        <div class="form-group col-md-2">
+                          <label class="control-label">UF</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="state">
+                          <small *ngIf="formNewUser.get('personalData').get('rg').get('state').valid && formNewUser.get('personalData').get('rg').get('state').touched"
+                            class="form-text text-success">UF válida</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('rg').get('state').valid && formNewUser.get('personalData').get('rg').get('state').touched"
+                            class="form-text text-danger">UF inválida
+                          </small>
+                        </div>
+  
+                        <div class="form-group col-md-4">
+                          <label class="control-label">Data de Expedição</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="date" [mask]="getMask('date')">
+                          <small *ngIf="formNewUser.get('personalData').get('rg').get('date').valid && formNewUser.get('personalData').get('rg').get('date').touched"
+                            class="form-text text-success">Data válida</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('rg').get('date').valid && formNewUser.get('personalData').get('rg').get('date').touched"
+                            class="form-text text-danger">Data inválida
+                          </small>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="form-group col-md-6">
+                          <label class="control-label">CPF</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="cpf" [mask]="getMask('CPF')">
+                          <small *ngIf="formNewUser.get('personalData').get('cpf').valid && formNewUser.get('personalData').get('cpf').touched" class="form-text text-success">CPF válido</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('cpf').valid && formNewUser.get('personalData').get('cpf').touched" class="form-text text-danger">CPF inválido
+                          </small>
+                        </div>
+  
+                        <div class="form-group col-md-6">
+                          <label class="control-label">Tipo Sanguíneo</label>
+  
+                          <select class="custom-select col-md-6" #selectBlood (change)="setValueBloodType(selectBlood.value)">
+                            <option *ngFor="let bloodType of bloodTypes" [value]="bloodType" [selected]="formNewUser.get('personalData').get('bloodType').value == bloodType">
+                              {{bloodType}}
+                            </option>
+                          </select>
+  
+                          <small *ngIf="formNewUser.get('personalData').get('bloodType').valid && formNewUser.get('personalData').get('bloodType').touched"
+                            class="form-text text-success">Tipo sanguíneo válido</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('bloodType').valid && formNewUser.get('personalData').get('bloodType').touched"
+                            class="form-text text-danger">Tipo sanguíneo inválido
+                          </small>
+                        </div>
+                      </div>
+  
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label class="control-label">Nome da Mãe</label>
+                          <input aria-describedby="addon-right addon-left" type="text" placeholder="Fulano de Tal" class="form-control" formControlName="motherSname">
+                          <small *ngIf="formNewUser.get('personalData').get('motherSname').valid && formNewUser.get('personalData').get('motherSname').touched"
+                            class="form-text text-success">Nome da mãe válido</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('motherSname').valid && formNewUser.get('personalData').get('motherSname').touched"
+                            class="form-text text-danger">Nome da mãe inválido
+                          </small>
+                        </div>
+  
+  
+  
+                        <div class="form-group col-md-2" id="divPhoneType">
+                          <label class="control-label">Tipo de telefone</label>
+                          <select class="custom-select" #selectPhone (change)="setValuePhoneType(selectPhone.value)">
+                            <option *ngFor="let phoneType of phoneTypes" [value]="phoneType" [selected]="formNewUser.get('personalData').get('phone').get('name').value == phoneType">
+                              {{phoneType}}
+                            </option>
+                          </select>
+  
+  
+                        </div>
+                        <div class="form-group col-md-4" id="divPhoneNumber" formGroupName="phone" >
+                          <label class="control-label">Número:</label>
+                          <input aria-describedby="addon-right addon-left" type="text" placeholder="Fulano de Tal" class="form-control" formControlName="numberPhone" [mask]="getMask(selectPhone.value)">
+                          <small *ngIf="formNewUser.get('personalData').get('phone').get('numberPhone').valid && formNewUser.get('personalData').get('phone').get('numberPhone').touched"
+                            class="form-text text-success">Telefone válido</small>
+                          <small *ngIf="!formNewUser.get('personalData').get('phone').get('numberPhone').valid && formNewUser.get('personalData').get('phone').get('numberPhone').touched"
+                            class="form-text text-danger">Telefone inválido
+                          </small>
+                        </div>
+  
+                      </div>
+  
+                      <div class="text-center">
+                        <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('personalData', 'next')">Proximo</button>
+                      </div>
                     </div>
- 
-                    <div class="text-center">
-                      <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('institution', 'previous')">Anterior</button>
-                      <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('institution', 'next')">Proximo</button>
+  
+                    <!--********************************ENDEREÇOS******************************* -->
+                    <div *ngIf="visualizationEnd" formGroupName="address">
+                      <div class="row justify-content-end">
+                        <div class="col-4" style="margin-bottom: 5px; font-size:16px; font-weight:bold">
+                          Passo 2
+                          <hr>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-6">
+                          <label class="control-label">Logradouro</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="street">
+                          <small *ngIf="formNewUser.get('address').get('street').valid && formNewUser.get('address').get('street').touched" class="form-text text-success">Logradouro válido</small>
+                          <small *ngIf="!formNewUser.get('address').get('street').valid && formNewUser.get('address').get('street').touched" class="form-text text-danger">Logradouro inválido
+                          </small>
+                        </div>
+  
+                        <div class="form-group col-md-2">
+                          <label class="control-label">Nº</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="number">
+                          <small *ngIf="formNewUser.get('address').get('number').valid && formNewUser.get('address').get('number').touched" class="form-text text-success">Número válido</small>
+                          <small *ngIf="!formNewUser.get('address').get('number').valid && formNewUser.get('address').get('number').touched" class="form-text text-danger">Número inválido
+                          </small>
+                        </div>
+  
+                        <div class="form-group col-md-4">
+                          <label class="control-label">Bairro</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="neighborhood">
+                          <small *ngIf="formNewUser.get('address').get('neighborhood').valid && formNewUser.get('address').get('neighborhood').touched"
+                            class="form-text text-success">Bairro válido</small>
+                          <small *ngIf="!formNewUser.get('address').get('neighborhood').valid && formNewUser.get('address').get('neighborhood').touched"
+                            class="form-text text-danger">Bairro inválido
+                          </small>
+                        </div>
+  
+  
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('address', 'previous')">Anterior</button>
+                        <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('address', 'next')">Proximo</button>
+                      </div>
                     </div>
+  
+                    <!--********************************DADOS DA INSTITUIÇÃO******************************* -->
+                    <div *ngIf="visualizationInsti" formGroupName="institution">
+                      <div class="row justify-content-end">
+                        <div class="col-4" style="margin-bottom: 5px; font-size:16px; font-weight:bold">
+                          Passo 3
+                          <hr>
+                        </div>
+                      </div>
+                      <div class="row">
+  
+                        <div class="form-group col-md-6">
+                          <label class="control-label">Nome da Instituição</label>
+  
+                          <select class="custom-select col-md-6" #selectInstitution (change)="setValueInstitution(selectInstitution.value)">
+                            <!-- faz a verificação do selected toda vez que entra no ng if para cada campo, é necessario para manter o 
+                              valor caso fique alternando entre as paginas, mas como afeta o desempenho? -->
+                            <option *ngFor="let institution of institutions" [value]="institution" [selected]="formNewUser.get('institution').get('name').value == institution">
+                              {{institution}}
+                            </option>
+                          </select>
+  
+                          <small *ngIf="formNewUser.get('institution').get('name').valid && formNewUser.get('institution').get('name').touched" class="form-text text-success">Nome da Instituição válido</small>
+                          <small *ngIf="!formNewUser.get('institution').get('name').valid && formNewUser.get('institution').get('name').touched" class="form-text text-danger">Nome da Instituição inválido
+                          </small>
+                        </div>
+  
+                        <div class="form-group col-md-6">
+                          <label class="control-label">Cidade da Instituição</label>
+  
+                          <select class="custom-select col-md-6" #selectCity (change)="setValueCity(selectCity.value)">
+                            <option *ngFor="let city of citysInstitution" [value]="city" [selected]="formNewUser.get('institution').get('city').value == city">
+                              {{city}}
+                            </option>
+                          </select>
+                          <small *ngIf="formNewUser.get('institution').get('city').valid && formNewUser.get('institution').get('city').touched" class="form-text text-success">Cidade válida</small>
+                          <small *ngIf="!formNewUser.get('institution').get('city').valid && formNewUser.get('institution').get('city').touched" class="form-text text-danger">Cidade inválida
+                          </small>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="form-group col-md-7">
+                          <label class="control-label">Nome do Curso</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="course">
+                          <small *ngIf="formNewUser.get('institution').get('course').valid && formNewUser.get('institution').get('course').touched"
+                            class="form-text text-success">Curso válido</small>
+                          <small *ngIf="!formNewUser.get('institution').get('course').valid && formNewUser.get('institution').get('course').touched"
+                            class="form-text text-danger">Curso inválido
+                          </small>
+                        </div>
+  
+                        <div class="form-group col-md-2">
+                          <label class="control-label">Ano de Início</label>
+                          <input aria-describedby="addon-right addon-left" type="text" class="form-control" formControlName="startYear">
+                          <small *ngIf="formNewUser.get('institution').get('startYear').valid && formNewUser.get('institution').get('startYear').touched"
+                            class="form-text text-success">Ano de início válido</small>
+                          <small *ngIf="!formNewUser.get('institution').get('startYear').valid && formNewUser.get('institution').get('startYear').touched"
+                            class="form-text text-danger">Ano de início inválido
+                          </small>
+                        </div>
+  
+                        <div class="form-group col-md-3">
+                          <label class="control-label">Previsão de Término</label>
+                          <input aria-describedby="addon-right addon-left" type="email" class="form-control" formControlName="yearTermination">
+                          <small *ngIf="formNewUser.get('institution').get('yearTermination').valid && formNewUser.get('institution').get('yearTermination').touched"
+                            class="form-text text-success">Ano de término válido</small>
+                          <small *ngIf="!formNewUser.get('institution').get('yearTermination').valid && formNewUser.get('institution').get('yearTermination').touched"
+                            class="form-text text-danger">Ano de término inválido
+                          </small>
+                        </div>
+                      </div>
+  
+                      <br>
+  
+                      <div class="row">
+                        <div class="form-group col-md-6">
+  
+                          <label>Perído de Ida</label>
+  
+                          <div class="table-responsive">
+                            <table class="table table-md">
+                              <thead>
+                                <tr id="periodosOnibus">
+                                  <th scope="col"></th>
+                                  <th scope="col">Manhã - 7h </th>
+                                  <th scope="col">Tarde - 13h</th>
+                                  <th scope="col">Noite - 18h40</th>
+                                  <th scope="col">Não Vou</th>
+                                </tr>
+                              </thead>
+  
+                              <tbody>
+                                <tr *ngFor="let day of daysOfTheWeek">
+                                  <th scope="row">{{day.name}}</th>
+                                  <td>
+                                    <input class="form-check-input" type="checkbox"  [checked]="timeToGoInstitution[day.index][0]" (change)="setValuetimeToGoInstitution(day.index, 0)">
+                                  </td>
+                                  <td>
+                                    <input class="form-check-input" type="checkbox"  [checked]="timeToGoInstitution[day.index][1]" (change)="setValuetimeToGoInstitution(day.index, 1)">
+                                  </td>
+                                  <td>
+                                    <input class="form-check-input" type="checkbox"  [checked]="timeToGoInstitution[day.index][2]" (change)="setValuetimeToGoInstitution(day.index, 2)">
+                                  </td>
+                                  <td>
+                                    <input class="form-check-input" type="checkbox"  [checked]="timeToGoInstitution[day.index][3]" (change)="setValuetimeToGoInstitution(day.index, 3)">
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6">
+  
+                          <label>Perído de Volta</label>
+  
+                          <div class="table-responsive">
+                            <table class="table table-md" #table>
+                              <thead>
+                                <tr id="periodosOnibus">
+                                  <th scope="col"></th>
+                                  <th scope="col">Manhã - 12h </th>
+                                  <th scope="col">Tarde - 17h30</th>
+                                  <th scope="col">Noite - 23h40</th>
+                                  <th scope="col">Não Vou</th>
+                                </tr>
+                              </thead>
+  
+                              <tbody>
+                                <tr *ngFor="let day of daysOfTheWeek">
+                                  <th scope="row">{{day.name}}</th>
+                                  <td>
+                                    <input class="form-check-input" type="checkbox" [checked]="timeToBackInstitution[day.index][0]" (change)="setValuetimeToBackInstitution(day.index, 0)"> 
+                                  </td>
+                                  <td>
+                                    <input class="form-check-input" type="checkbox"  [checked]="timeToBackInstitution[day.index][1]"(change)="setValuetimeToBackInstitution(day.index, 1)" >
+                                  </td>
+                                  <td>
+                                    <input class="form-check-input" type="checkbox"[checked]="timeToBackInstitution[day.index][2]" (change)="setValuetimeToBackInstitution(day.index, 2)">
+                                  </td>
+                                  <td>
+                                    <input class="form-check-input" type="checkbox" [checked]="timeToBackInstitution[day.index][3]" (change)="setValuetimeToBackInstitution(day.index, 3)">
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+  
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('institution', 'previous')">Anterior</button>
+                        <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('institution', 'next')">Proximo</button>
+                      </div>
+  
+                    </div>
+                    <!--********************************DOCUMENTOS******************************* -->
+                    <div *ngIf="visualizationDoc">
+                      <div class="row justify-content-end">
+                        <div class="col-4" style="margin-bottom: 5px; font-size:16px; font-weight:bold">
+                          Passo 4
+                          <hr>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-6">
+                          <fieldset class="form-group">
+                            <label for="exampleInputFile">RG</label>
+                            <input type="file" class="form-control-file" id="exampleInputFile" #file>
+             
+                          </fieldset>
+                        </div>
+  
+                        <div class="col-md-6">
+                          <fieldset class="form-group">
+                            <label for="exampleInputFile">CPF</label>
+                            <input type="file" class="form-control-file" id="exampleInputFile"  >
+                            <div id="result">
+  
+                            </div>
+                          </fieldset>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-6">
+                          <fieldset class="form-group">
+                            <label for="exampleInputFile">Conprovante de Residencia</label>
+                            <input type="file" class="form-control-file" id="exampleInputFile">
+                          </fieldset>
+                        </div>
+  
+                        <div class="col-md-6">
+                          <fieldset class="form-group">
+                            <label for="exampleInputFile">Comprovante de Matricula</label>
+                            <input type="file" class="form-control-file" id="exampleInputFile">
+                          </fieldset>
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-6">
+                          <fieldset class="form-group">
+                            <label for="exampleInputFile">Cadastro Municipal</label>
+                            <input type="file" class="form-control-file" id="exampleInputFile">
+                          </fieldset>
+                        </div>
+  
+                        <div class="col-md-6">
+                          <fieldset class="form-group">
+                            <label for="exampleInputFile">Foto 3x4</label>
+                            <input type="file" class="form-control-file" id="exampleInputFile">
+                          </fieldset>
+                        </div>
+                      </div>
+  
+                      <div class="text-center">
+                        <button type="button" class="btn btn-info float-right" (click)="openVisualizationForms('documents', 'next')">Próximo</button>
+                        <button type="button" class="btn btn-info float-left" (click)="openVisualizationForms('documents', 'previous')">Anterior</button>
+                      </div>
+                    </div>
+  
+                    <!-- ************************ SALVAR ******************************** -->
+                    <div *ngIf="visualizationSave">
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-info float-right">CADASTRAR</button>
+                        <button type="button" class="btn btn-info float-left" (click)="openVisualizationForms('save', 'previous')">Anterior</button>
+                      </div>
+                    </div>
+  
                   </div>
-                  <!--********************************DOCUMENTOS******************************* -->
-                  <div *ngIf="visualizationDoc">
-                    <div class="row justify-content-end">
-                      <div class="col-4" style="margin-bottom: 5px; font-size:16px; font-weight:bold">
-                        Passo 4
-                        <hr>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <fieldset class="form-group">
-                          <label for="exampleInputFile">RG</label>
-                          <input type="file" class="form-control-file" id="exampleInputFile">
-                        </fieldset>
-                      </div>
- 
-                      <div class="col-md-6">
-                        <fieldset class="form-group">
-                          <label for="exampleInputFile">CPF</label>
-                          <input type="file" class="form-control-file" id="exampleInputFile">
-                        </fieldset>
-                      </div>
-                    </div>
- 
-                    <div class="row">
-                      <div class="col-md-6">
-                        <fieldset class="form-group">
-                          <label for="exampleInputFile">Conprovante de Residencia</label>
-                          <input type="file" class="form-control-file" id="exampleInputFile">
-                        </fieldset>
-                      </div>
- 
-                      <div class="col-md-6">
-                        <fieldset class="form-group">
-                          <label for="exampleInputFile">Comprovante de Matricula</label>
-                          <input type="file" class="form-control-file" id="exampleInputFile">
-                        </fieldset>
-                      </div>
-                    </div>
- 
-                    <div class="row">
-                      <div class="col-md-6">
-                        <fieldset class="form-group">
-                          <label for="exampleInputFile">Cadastro Municipal</label>
-                          <input type="file" class="form-control-file" id="exampleInputFile">
-                        </fieldset>
-                      </div>
- 
-                      <div class="col-md-6">
-                        <fieldset class="form-group">
-                          <label for="exampleInputFile">Foto 3x4</label>
-                          <input type="file" class="form-control-file" id="exampleInputFile">
-                        </fieldset>
-                      </div>
-                    </div>
- 
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-info float-right">Cadastrar</button>
-                      <button type="button" class="btn btn-info float-left" (click)="openVisualizationForms('documents', 'previous')">Anterior</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
- 
+  
+                </form>
+  
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>

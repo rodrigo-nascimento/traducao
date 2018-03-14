@@ -8,6 +8,7 @@ import { URL_AuthAPI, URL_OpenAPI } from '../../app.api';
 import { SystemLogin } from '../models/system-login.model';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
 import { headersToString } from 'selenium-webdriver/http';
+import { SystemUserUniversityTransportation } from '../models/system-users-university-transportation.model';
 
 /*
  * classe de serviços, possui métodos que realizam algum lógica -> conexão com o servidor
@@ -69,18 +70,18 @@ export class SystemUsersService {
 
     }
 
-     // *******************DELETAR USUARIO******************** Ok
-     public deleteUser(systemUsers: SystemUsers, token: string): Observable<SystemUsers> {
+    // *******************DELETAR USUARIO******************** Ok
+    public deleteUser(systemUsers: SystemUsers, token: string): Observable<SystemUsers> {
 
         let headers: Headers = new Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', token);
 
-            return this.http.put(
-                `${URL_AuthAPI}/systemUsers/delAdm`,
-                JSON.stringify(systemUsers),
-                new RequestOptions({ headers: headers }))
-                .map((resposta: Response) => resposta.json());
+        return this.http.put(
+            `${URL_AuthAPI}/systemUsers/delAdm`,
+            JSON.stringify(systemUsers),
+            new RequestOptions({ headers: headers }))
+            .map((resposta: Response) => resposta.json());
 
     }
 
@@ -188,5 +189,22 @@ export class SystemUsersService {
 
         return this.http.post(link, body, option)
             .map((resposta: Response) => resposta.json());
+    }
+
+
+    /* ************************** TRANSPORTE UNIVERSITARIO ******************/
+
+    public registerUsersAdmTransporte(systemUsers: SystemUserUniversityTransportation, token: string): Observable<SystemUserUniversityTransportation> {
+
+        let headers: Headers = new Headers();
+        headers.append('Content-type', 'application/json');
+        headers.append('Authorization', token);
+
+        return this.http.post(
+            `${URL_AuthAPI}/systemUsers`,
+            JSON.stringify(systemUsers),
+            new RequestOptions({ headers: headers }))
+            .map((resposta: Response) => resposta.json());
+
     }
 }

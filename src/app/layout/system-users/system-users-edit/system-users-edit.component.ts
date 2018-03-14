@@ -85,19 +85,22 @@ export class SystemUsersEditComponent implements OnInit {
     this.inscricao.unsubscribe();
   }
 
-  public array : Array<Object> = [
-    
-    { name: 'Users',
+  public array: Array<Object> = [
+
+    {
+      name: 'Users',
       path: '/system-users',
       icone: 'fa-users'
     },
-    { name:'Listagem',
-      path:'/system-users/systemUsersList',
-      icone:'fa-list'
+    {
+      name: 'Listagem',
+      path: '/system-users/systemUsersList',
+      icone: 'fa-list'
     },
-    { name:'Editar',
-      path:'system-users/systemUsersEdit',
-      icone:'fa-edit'
+    {
+      name: 'Editar',
+      path: 'system-users/systemUsersEdit',
+      icone: 'fa-edit'
     }
 
   ]
@@ -377,8 +380,8 @@ export class SystemUsersEditComponent implements OnInit {
     this.user.email = this.formEditUser.value.email;
     this.user.active = this.formEditUser.active;
     this.user.documents = [
-      { name: "CPF", value: this.formEditUser.value.cpf },
-      { name: "RG", value: this.formEditUser.value.rg }
+      { name: "CPF", value: this.formEditUser.value.cpf, expeditionDate: null, state: null },
+      { name: "RG", value: this.formEditUser.value.rg, expeditionDate: null, state: null }
     ];
     this.user.address = address;
     this.user.phone = phones;
@@ -387,7 +390,7 @@ export class SystemUsersEditComponent implements OnInit {
     this.user.date = date;
     this.user.ipUser = "193.168.1.1";  // Terá que ver um jeito de pegar o IP da maquina do usuario
     this.user.session = "USUARIO ADMINISTRATIVO"; // Terá que ver um jeito de pegar a sessão que o usuario está utilizando
-    this.user.description = "EDITOU USUARIO ADMINISTRATIVO" ; // TESTE: + this.user.name + "CPF: " + this.formEditUser.value.cpf // Ficará fixo, pois todas as funções do CRUD terá, então é só alterar em cada função
+    this.user.description = "EDITOU USUARIO ADMINISTRATIVO"; // TESTE: + this.user.name + "CPF: " + this.formEditUser.value.cpf // Ficará fixo, pois todas as funções do CRUD terá, então é só alterar em cada função
 
 
     this.systemUsersService.editUser(this.user, this.token)

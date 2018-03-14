@@ -1,5 +1,5 @@
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Pipe } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -13,16 +13,16 @@ import { headersToString } from 'selenium-webdriver/http';
  */
 
 @Injectable()
-// a classe pode ser injetada em outra classe para que o uso dela possa ser feito
-// serviços são injetáveis 
 export class MaskService {
 
     private maskCpf ="000.000.000-00";
     private maskPhoneResidencial="(00)0000-0000";
     private maskPhoneCelular="(00)00000-0000";
     private maskCep="00000-000";
+    private maskDate = "00/00/0000";
 
     constructor() { }
+
 
 
     public getMask(typeField): string{
@@ -36,8 +36,9 @@ export class MaskService {
             return this.maskPhoneResidencial;
         }else if(typeField =="CELULAR" || typeField=="CELULAR-RECADO"){
             return this.maskPhoneCelular;
+        }else if(typeField=='date'){
+            return this.maskDate;
         }
     }
-
 
 }
