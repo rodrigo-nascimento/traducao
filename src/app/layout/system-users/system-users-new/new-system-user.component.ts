@@ -16,6 +16,7 @@ import { RequiredValidator } from '@angular/forms/src/directives/validators';
 import { MaskService } from '../../../shared/services/mask-forms.service';
 import { AuditService } from '../../../shared/services/audit.service';
 import { AuditModels } from '../../../shared/models/audit.models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-user',
@@ -45,7 +46,7 @@ export class NewSystemUserComponent implements OnInit {
 
   public modules: String[] = ["Administração Geral", "Transporte Universitário", "Módulo 3", "Módulo 4"];
 
-  constructor(private router: Router, private systemUsersService: SystemUsersService,
+  constructor(private translate: TranslateService,private router: Router, private systemUsersService: SystemUsersService,
     private auditService: AuditService, private maskService: MaskService) {
 
     this.formNewUser = new FormGroup({
@@ -337,5 +338,9 @@ export class NewSystemUserComponent implements OnInit {
         }
 
       });
+  }
+
+  changeLang(language: string) {
+    this.translate.use(language);
   }
 }

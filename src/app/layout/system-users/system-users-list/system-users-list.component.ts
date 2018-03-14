@@ -7,6 +7,7 @@ import { routerTransition } from '../../../router.animations';
 import { Alert } from 'selenium-webdriver';
 import { Title } from '@angular/platform-browser/src/browser/title';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -36,11 +37,12 @@ export class SystemUsersListComponent implements OnInit {
   public idVisualization: string;
 
   constructor(
+    private translate: TranslateService,
     private router: Router,
     public route: ActivatedRoute,
     private modalService: NgbModal,
     private systemUsersService: SystemUsersService,
-    
+
 
   ) { }
 
@@ -52,19 +54,21 @@ export class SystemUsersListComponent implements OnInit {
     this.main(1);
   }
 
-  public array : Array<Object> = [
-    
-    { name: 'Users',
+  public array: Array<Object> = [
+
+    {
+      name: 'Users',
       path: '/system-users',
       icone: 'fa-users'
     },
-    
-    { name:'Listagem',
-      path:'/system-users/systemUsersList',
-      icone:'fa-list'
+
+    {
+      name: 'Listagem',
+      path: '/system-users/systemUsersList',
+      icone: 'fa-list'
     }
   ]
-  
+
   /* ***************** Busca **********************/
   public search(option, filter) {
 
@@ -79,7 +83,7 @@ export class SystemUsersListComponent implements OnInit {
         this.apiUser = apiResponse;
         this.carregarListaDePaginas();
       }
-    );
+      );
   }
 
 
@@ -166,8 +170,8 @@ export class SystemUsersListComponent implements OnInit {
     this.router.navigate(['/system-users/systemUsersEdit', userE._id]);
   }
 
-   date = new Date;
-  
+  date = new Date;
+
   public deleteUser(user: SystemUsers): void {
 
     user.nameUser = this.userName;
@@ -176,7 +180,7 @@ export class SystemUsersListComponent implements OnInit {
     user.ipUser = "192.168.1.1"
     user.session = "USUARIO ADMINISTRATIVO";
     user.description = "DELETOU USUARIO ADMINISTRATIVO";
-   
+
     this.systemUsersService.deleteUser(user, this.token)
       .subscribe((apiResponse: SystemUsers) => {
 
@@ -252,4 +256,7 @@ export class SystemUsersListComponent implements OnInit {
 
   }
 
+  changeLang(language: string) {
+    this.translate.use(language);
+  }
 }

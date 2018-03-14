@@ -8,6 +8,7 @@ import {NgxMaskModule} from 'ngx-mask';
 import { PageHeaderModule, StatModule } from '../../../shared/index';
 import { SystemUsersService } from '../../../shared/services/system-users.service';
 import { MaskService } from '../../../shared/services/mask-forms.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { MaskService } from '../../../shared/services/mask-forms.service';
     StatModule,
     SystemUsersEditRoutingModule,
     ReactiveFormsModule,
+    TranslateModule,
     NgbModule.forRoot(),
     NgxMaskModule.forRoot(),
   ],

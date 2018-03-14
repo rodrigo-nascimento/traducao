@@ -10,6 +10,7 @@ import { $$ } from 'protractor';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { MaskService } from '../../../shared/services/mask-forms.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-edit',
@@ -38,7 +39,7 @@ export class SystemUsersEditComponent implements OnInit {
   public contacts: boolean = false;
   public permissions: boolean = false;
 
-  constructor(public route: ActivatedRoute, public router: Router, private systemUsersService: SystemUsersService, private maskService: MaskService) {
+  constructor(private translate: TranslateService,public route: ActivatedRoute, public router: Router, private systemUsersService: SystemUsersService, private maskService: MaskService) {
     this.formEditUser = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.pattern(/\S+@\S+\.\S+/)], ),
@@ -410,5 +411,9 @@ export class SystemUsersEditComponent implements OnInit {
         }
 
       });
+  }
+
+  changeLang(language: string) {
+    this.translate.use(language);
   }
 }

@@ -6,6 +6,7 @@ import { PageHeaderModule, StatModule } from '../../../shared/index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SystemUsersListGuard } from '../../../shared/guard/system-users-list.guard';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SystemUsersListGuard } from '../../../shared/guard/system-users-list.gu
     NgbModule.forRoot(),
     StatModule,
     FormsModule,
+    TranslateModule,
     ReactiveFormsModule,
 
 

@@ -4,18 +4,38 @@
 
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item dropdown" ngbDropdown>
+                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                    <i class="fa fa-language"></i> {{ 'Idioma' | translate }}
+                    <b class="caret"></b>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('en')">
+                        {{ 'Inglês' | translate }}
+                    </a>
+
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('pt-br')">
+                        {{ 'Português' | translate }}
+                    </a>
+                </div>
+            </li>
+
             <li class="nav-item dropdown" ngbDropdown>
 
-                <a href="javascript:void(0)" title="Usuário" ngbDropdownToggle>
-                    {{ userMail }}
+                <!--    <a href="javascript:void(0)" title="Usuário" ngbDropdownToggle> -->
+
+                <a href="javascript:void(0)" title="Usuário" class="nav-link" ngbDropdownToggle>
+
                     <i class="fa fa-user"></i>
-                    <b class="caret"></b>
+                    {{ userMail }}
+
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" [routerLink]="['/login']" title="Sair" (click)="onLoggedout()">
                         <i class="fa fa-fw fa-power-off"></i>
-                        {{ 'Log Out' | translate }}
+                        {{ 'Encerrar Sessão' | translate }}
                     </a>
                 </div>
 

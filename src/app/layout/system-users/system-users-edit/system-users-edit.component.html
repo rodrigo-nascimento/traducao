@@ -8,10 +8,10 @@
         <hr class="header"> -->
     
         <ul class="steps">
-            <li [class.is-active]="personalData">Dados Pessoais</li>
-            <li [class.is-active]="addresses">Endereços</li>
-            <li [class.is-active]="contacts">Contatos</li>
-            <li [class.is-active]="permissions">Permissões</li>
+            <li [class.is-active]="personalData">{{ 'Dados Pessoais' | translate }}</li>
+            <li [class.is-active]="addresses">{{ 'Endereços' | translate }}</li>
+            <li [class.is-active]="contacts">{{ 'Contatos' | translate }}</li>
+            <li [class.is-active]="permissions">{{ 'Permissões' | translate }}</li>
         </ul>
     
     
@@ -25,12 +25,12 @@
                     <div class="containerIPessoais">
                         <div class="form-row" style="margin-top:10px">
                             <div class="form-group col-md-10">
-                                <label for="name">Nome Completo</label>
+                                <label for="name">{{ 'Nome Completo' | translate }}</label>
                                 <input type="text" class="form-control input-underline input-sm inputName" [class.is-valid]="formEditUser.get('name').valid"
                                     [class.is-invalid]="formEditUser.get('name').touched && formEditUser.get('name').invalid" placeholder="Seu nome"
                                     formControlName="name">
-                                <small *ngIf="formEditUser.get('name').valid && formEditUser.get('name').touched" class="form-text text-success">Nome válido</small>
-                                <small *ngIf="!formEditUser.get('name').valid && formEditUser.get('name').touched" class="form-text text-danger">Nome inválido - Favor informar nome, sobrenome e não utilizar números ou caracteres especiais!
+                                <small *ngIf="formEditUser.get('name').valid && formEditUser.get('name').touched" class="form-text text-success">{{ 'Nome válido' | translate }}</small>
+                                <small *ngIf="!formEditUser.get('name').valid && formEditUser.get('name').touched" class="form-text text-danger">{{ 'Nome inválido - Favor informar nome, sobrenome e não utilizar números ou caracteres especiais!' | translate }}
                                 </small>
                             </div>
     
@@ -48,8 +48,8 @@
                                 <label for="name" class="textCPF">CPF</label>
                                 <input type="text" class="form-control input-underline input-sm" [class.is-valid]="formEditUser.get('cpf').valid" [class.is-invalid]="formEditUser.get('cpf').touched && formEditUser.get('cpf').invalid"
                                     placeholder="000.000.000-00" formControlName="cpf" (blur)="validaAtributos('cpf')" [mask]="getMask('CPF')">
-                                <small *ngIf="formEditUser.get('cpf').valid && formEditUser.get('cpf').touched" class="form-text text-success">CPF válido</small>
-                                <small *ngIf="!formEditUser.get('cpf').valid && formEditUser.get('cpf').touched" class="form-text text-danger">CPF inválido - Favor informar CPF, e não utilizar letras ou caracteres especiais!
+                                <small *ngIf="formEditUser.get('cpf').valid && formEditUser.get('cpf').touched" class="form-text text-success">{{ 'CPF válido' | translate }}</small>
+                                <small *ngIf="!formEditUser.get('cpf').valid && formEditUser.get('cpf').touched" class="form-text text-danger">{{ 'CPF inválido - Favor informar CPF, e não utilizar letras ou caracteres especiais!' | translate }}
                                 </small>
                             </div>
                             <div class="form-group col-md-6">
@@ -64,14 +64,14 @@
                                 [class.is-invalid]="formEditUser.get('email').touched && formEditUser.get('email').invalid" placeholder="name@example.com"
                                 formControlName="email" (blur)="validaAtributos('email')">
     
-                            <small *ngIf="formEditUser.get('email').valid && formEditUser.get('email').touched" class="form-text text-success">E-mail válido</small>
+                            <small *ngIf="formEditUser.get('email').valid && formEditUser.get('email').touched" class="form-text text-success">{{ 'E-mail válido' | translate }}</small>
     
-                            <small *ngIf="!formEditUser.get('email').valid && formEditUser.get('email').touched" class="form-text text-danger">E-mail inválido - Favor informar o e-mail!</small>
+                            <small *ngIf="!formEditUser.get('email').valid && formEditUser.get('email').touched" class="form-text text-danger">{{ 'E-mail inválido - Favor informar o e-mail!' | translate }}</small>
                         </div>
     
     
                         <div class="text-center">
-                            <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('personalData', 'next')">Proximo</button>
+                            <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('personalData', 'next')">{{ 'Proximo' | translate }}</button>
                         </div>
                     </div>
                 </div>
@@ -88,9 +88,9 @@
                         <div class="form-row">
                             <div class="form-group col-md-4" id="divPhone">
                                 <select class="custom-select" #selectEndereco>
-                                    <option value="INVALID" selected>Escolha um tipo para cadastrar</option>
-                                    <option value="RESIDENCIAL">RESIDENCIAL</option>
-                                    <option value="COMERCIAL">COMERCIAL</option>
+                                    <option value="INVALID" selected>{{ 'Escolha um tipo para cadastrar' | translate }}</option>
+                                    <option value="RESIDENCIAL">{{ 'RESIDENCIAL' | translate }}</option>
+                                    <option value="COMERCIAL">{{ 'COMERCIAL' | translate }}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-8">
@@ -135,45 +135,45 @@
                                             <input type="text" class="form-control input-underline input-sm" formControlName="zip_code">
                                         </div>
                                         <div class="form-group col-sm-8">
-                                            <label>Logradouro:</label>
+                                            <label>{{ 'Logradouro:' | translate }}</label>
                                             <input type="text" class="form-control input-underline input-sm" [class.is-valid]="this.formEditUser.get('enderecos').get(endereco).get('street').valid"
                                                 [class.is-invalid]="this.formEditUser.get('enderecos').get(endereco).get('street').touched && this.formEditUser.get('enderecos').get(endereco).get('street').invalid"
                                                 placeholder="Logradouro" formControlName="street">
                                             <small *ngIf="this.formEditUser.get('enderecos').get(endereco).get('street').valid  && this.formEditUser.get('enderecos').get(endereco).get('street').touched"
-                                                class="form-text text-success">Logradouro válido</small>
+                                                class="form-text text-success">{{ 'Logradouro válido' | translate }}</small>
                                             <small *ngIf="!this.formEditUser.get('enderecos').get(endereco).get('street').valid && this.formEditUser.get('enderecos').get(endereco).get('street').touched"
-                                                class="form-text text-danger">Logradouro Inválido - Por favor informar o logradouro, e não utilizar numeros ou
-                                                caracteres especiais!</small>
+                                                class="form-text text-danger">{{ 'Logradouro Inválido - Por favor informar o logradouro, e não utilizar numeros ou
+                                                caracteres especiais!' | translate }}</small>
                                         </div>
     
                                         <div class="form-group col-sm-2">
-                                            <label>Número:</label>
+                                            <label>{{ 'Número:' | translate }}</label>
                                             <input type="text" class="form-control input-underline input-sm" [class.is-valid]="this.formEditUser.get('enderecos').get(endereco).get('number').valid"
                                                 [class.is-invalid]="this.formEditUser.get('enderecos').get(endereco).get('number').touched && this.formEditUser.get('enderecos').get(endereco).get('number').invalid"
                                                 placeholder="Nº" formControlName="number">
                                             <small *ngIf="this.formEditUser.get('enderecos').get(endereco).get('number').valid && this.formEditUser.get('enderecos').get(endereco).get('number').touched"
-                                                class="form-text text-success">Número válido</small>
+                                                class="form-text text-success">{{ 'Número válido' | translate }}</small>
                                             <small *ngIf="!this.formEditUser.get('enderecos').get(endereco).get('number').valid &&  this.formEditUser.get('enderecos').get(endereco).get('number').enabled && this.formEditUser.get('enderecos').get(endereco).get('number').touched"
-                                                class="form-text text-danger">Número Inválido
+                                                class="form-text text-danger">{{ 'Número Inválido' | translate }}
                                             </small>
                                         </div>
                                     </div>
                                     <!-- **************************BAIRRO E COMPLEMENTO************************** -->
                                     <div class="form-row">
                                         <div class="form-group col-sm-6">
-                                            <label>Bairro:</label>
+                                            <label>{{ 'Bairro:' | translate }}</label>
                                             <input type="text" class="form-control input-underline input-sm" [class.is-valid]="this.formEditUser.get('enderecos').get(endereco).get('neighborhood').valid"
                                                 [class.is-invalid]="this.formEditUser.get('enderecos').get(endereco).get('neighborhood').touched && this.formEditUser.get('enderecos').get(endereco).get('neighborhood').invalid"
                                                 placeholder="Bairro" formControlName="neighborhood">
                                             <small *ngIf="this.formEditUser.get('enderecos').get(endereco).get('neighborhood').valid && this.formEditUser.get('enderecos').get(endereco).get('neighborhood').touched"
-                                                class="form-text text-success">Bairro válido</small>
+                                                class="form-text text-success">{{ 'Bairro válido' | translate }}</small>
                                             <small *ngIf="!this.formEditUser.get('enderecos').get(endereco).get('neighborhood').valid &&  this.formEditUser.get('enderecos').get(endereco).get('neighborhood').enabled && this.formEditUser.get('enderecos').get(endereco).get('neighborhood').touched"
-                                                class="form-text text-danger">Bairro Inválido - Por favor informar o bairro, e não utilizar numeros ou caracteres
-                                                especiais!
+                                                class="form-text text-danger">{{ 'Bairro Inválido - Por favor informar o bairro, e não utilizar numeros ou caracteres
+                                                especiais!' | translate }}
                                             </small>
                                         </div>
                                         <div class="form-group col-sm-6">
-                                            <label>Complemento:</label>
+                                            <label>{{ 'Complemento:' | translate }}</label>
                                             <input type="text" class="form-control input-underline input-sm " placeholder="Complemento" formControlName="complement">
                                         </div>
                                     </div>
@@ -181,11 +181,11 @@
                                     <!-- **************************CIDADE E ESTADO************************** -->
                                     <div class="form-row">
                                         <div class="form-group col-sm-6">
-                                            <label>Cidade:</label>
+                                            <label>{{ 'Cidade:' | translate }}</label>
                                             <input type="text" class="form-control input-underline input-sm" placeholder="Cidade" formControlName="city">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                            <label>Estado:</label>
+                                            <label>{{ 'Estado:' | translate }}</label>
                                             <input type="text" class="form-control input-underline input-sm" placeholder="Estado" formControlName="state">
                                         </div>
                                     </div>
@@ -194,8 +194,8 @@
     
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('addresses', 'previous')">Anterior</button>
-                            <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('addresses', 'next')">Proximo</button>
+                            <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('addresses', 'previous')">{{ 'Anterior' | translate }}</button>
+                            <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('addresses', 'next')">{{ 'Proximo' | translate }}</button>
                         </div>
     
                     </div>
@@ -211,17 +211,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-6" id="divPhone">
                                 <select class="custom-select select-phone" #selectPhone>
-                                    <option value="INVALID" selected>Escolha um tipo</option>
-                                    <option value="RESIDENCIAL">RESIDENCIAL</option>
-                                    <option value="COMERCIAL">COMERCIAL</option>
-                                    <option value="CELULAR">CELULAR</option>
-                                    <option value="FIXO-RECADO">FIXO-RECADO</option>
-                                    <option value="CELULAR-RECADO">CELULAR-RECADO</option>
+                                    <option value="INVALID" selected>{{ 'Escolha um tipo' | translate }}</option>
+                                    <option value="RESIDENCIAL">{{ 'RESIDENCIAL' | translate }}</option>
+                                    <option value="COMERCIAL">{{ 'COMERCIAL' | translate }}</option>
+                                    <option value="CELULAR">{{ 'CELULAR ' | translate }}</option>
+                                    <option value="FIXO-RECADO">{{ 'FIXO-RECADO' | translate }}</option>
+                                    <option value="CELULAR-RECADO">{{ 'CELULAR-RECADO' | translate }}</option>
     
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
-                                <button type="button" class="btn btn-primary" id="btnAddPhoneToForm" (click)="addPhoneToForm(selectPhone.value)">Adicionar</button>
+                                <button type="button" class="btn btn-primary" id="btnAddPhoneToForm" (click)="addPhoneToForm(selectPhone.value)">{{ 'Adicionar' | translate }}</button>
                             </div>
     
                         </div>
@@ -250,17 +250,17 @@
                     </div>
     
                     <div class="text-center">
-                        <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('contacts', 'previous')">Anterior</button>
-                        <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('contacts', 'next')">Proximo</button>
+                        <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('contacts', 'previous')">{{ 'Anterior' | translate }}</button>
+                        <button class="btn btn-info float-right" type="button" (click)="openVisualizationForms('contacts', 'next')">{{ 'Proximo' | translate }}</button>
                     </div>
     
                 </div>
     
                 <div title="Permissões" *ngIf="permissions">
-                    Permissões
+                    {{ 'Permissões' | translate }}
     
                     <div class="text-center">
-                        <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('permissions', 'previous')">Anterior</button>
+                        <button class="btn btn-info float-left" type="button" (click)="openVisualizationForms('permissions', 'previous')">{{ 'Anterior' | translate }}</button>
     
                     </div>
                 </div>
@@ -269,7 +269,7 @@
                     <div class="row justify-content-center">
                         <div class="col-2" style="margin-top:10px">
     
-                            <button type="submit" title="Cadastrar Usuário" class="btn  btn-primary btn-block" [disabled]="(!formEditUser.valid)" id="btnSubmit">CADASTRAR</button>
+                            <button type="submit" title="Cadastrar Usuário" class="btn  btn-primary btn-block" [disabled]="(!formEditUser.valid)" id="btnSubmit">{{ 'CADASTRAR' | translate }}</button>
                         </div>
                     </div>
                 </div>

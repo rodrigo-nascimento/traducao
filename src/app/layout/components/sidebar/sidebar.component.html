@@ -9,21 +9,21 @@
         <ul>
             <li>
                 <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" title="Principal" class="list-group-item">
-                    <span class="ajuste"> Home </span>
+                    <span class="ajuste"> {{ 'Principal' | translate }} </span>
                     <i class="fa fa-home"></i>
                 </a>                        
             </li>
 
             <li>
                 <a [routerLink]="['/system-users']" [routerLinkActive]="['router-link-active']" title="Usuários" class="list-group-item">
-                    <span class="ajuste"> Users </span>
+                    <span class="ajuste">{{ 'Usuários do Sistema' | translate }} </span>
                     <i class="fa fa-users"></i>
                 </a>                        
             </li>
 
             <li>
                 <a [routerLink]="['/university-transportation']" [routerLinkActive]="['router-link-active']" title="Transporte Universitário" class="list-group-item">
-                    <span class="ajuste"> Bus University </span>
+                    <span class="ajuste">{{ 'Transporte Universitário' | translate }} </span>
                     <i class="fa fa-bus"></i>
                 </a>    
             </li>

@@ -1,83 +1,82 @@
 <div [@routerTransition]>
 
-    <app-page-header 
-        [rota]=array>
+    <app-page-header [rota]=array>
     </app-page-header>
 
     <div class="row">
-    <div class="col-md-4">
-        <div class="contact-area">
-            <div class="contact">
-                <main>
-                    <section>
-                        <div class="content">
-                            <img src="https://image.flaticon.com/icons/svg/190/190653.svg" alt="Profile Image">
+        <div class="col-md-4">
+            <div class="contact-area">
+                <div class="contact">
+                    <main>
+                        <section>
+                            <div class="content">
+                                <img src="https://image.flaticon.com/icons/svg/190/190653.svg" alt="Profile Image">
 
-                            <aside>
-                                <h1>Cadastro de Usuário</h1>
-                                <p>Adicione um novo usuário no sistema </p>
-                            </aside>
+                                <aside>
+                                    <h1>{{ 'Cadastro de Usuário' | translate }}</h1>
+                                    <p>{{ 'Adicione um novo usuário no sistema' | translate }} </p>
+                                </aside>
 
-                            <button class="btn" (click)="addNewUser()">
-                                <span>Cadastrar</span>
+                                <button class="btn" (click)="addNewUser()">
+                                    <span>{{ 'Cadastrar' | translate }}</span>
 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                                    <g class="nc-icon-wrapper" fill="#444444">
-                                        <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                        <g class="nc-icon-wrapper" fill="#444444">
+                                            <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
 
-                        <div class="title">
-                            <p>Contact Me</p>
-                        </div>
-                    </section>
-
-
-                </main>
+                            <div class="title">
+                                <p>Contact Me</p>
+                            </div>
+                        </section>
 
 
+                    </main>
+
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-4" >
-        <div class="contact-area">
-            <div class="contact">
-                <main>
-                    <section>
-                        <div class="content">
-                            <img src="https://image.flaticon.com/icons/svg/190/190653.svg" alt="Profile Image">
+        <div class="col-md-4">
+            <div class="contact-area">
+                <div class="contact">
+                    <main>
+                        <section>
+                            <div class="content">
+                                <img src="https://image.flaticon.com/icons/svg/190/190653.svg" alt="Profile Image">
 
-                            <aside>
-                                <h1>Listagem de Usuário</h1>
-                                <p> Lista de usuários no sistema </p>
-                            </aside>
+                                <aside>
+                                    <h1>{{ 'Listagem de Usuário' | translate }}</h1>
+                                    <p>{{ 'Lista de usuários no sistema' | translate }} </p>
+                                </aside>
 
-                            <button (click)="listUsers()" class="btn">
-                                <span>Listagem</span>
+                                <button (click)="listUsers()" class="btn">
+                                    <span>{{ 'Listagem' | translate }}</span>
 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                                    <g class="nc-icon-wrapper" fill="#444444">
-                                        <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                        <g class="nc-icon-wrapper" fill="#444444">
+                                            <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
 
-                        <div class="title">
-                            <p>Contact Me</p>
-                        </div>
-                    </section>
-
-
-                </main>
+                            <div class="title">
+                                <p>Contact Me</p>
+                            </div>
+                        </section>
 
 
+                    </main>
+
+
+                </div>
             </div>
         </div>
+
     </div>
-   
-</div>
 </div>

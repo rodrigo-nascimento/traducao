@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
     public userName: string;
     public userMail: string;
+    
 
     constructor(private translate: TranslateService, public router: Router) {
 
@@ -39,6 +40,10 @@ export class HeaderComponent implements OnInit {
     toggleSidebar() {
         const dom: any = document.querySelector('body');
         dom.classList.toggle(this.pushRightClass);
+    }
+    
+    changeLang(language: string) {
+        this.translate.use(language);
     }
 
     onLoggedout() {

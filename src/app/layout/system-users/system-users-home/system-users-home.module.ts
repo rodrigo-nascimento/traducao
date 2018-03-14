@@ -4,6 +4,7 @@ import { SystemUsersHomeComponent } from './system-users-home.component';
 import { SystemUsersHomeRoutingModule } from './system-users-home-routing.module';
 import { PageHeaderModule, StatModule } from '../../../shared/index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PageHeaderModule,
     StatModule,
     FormsModule,
+    TranslateModule,
     ReactiveFormsModule
   ],
   declarations: [SystemUsersHomeComponent]

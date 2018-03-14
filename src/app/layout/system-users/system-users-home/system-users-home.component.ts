@@ -3,6 +3,7 @@ import { routerTransition } from '../../../router.animations';
 import { SystemUsersService } from '../../../shared/services/system-users.service';
 import { SystemUsers } from '../../../shared/models/system-users.model';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-system-users-home',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 export class SystemUsersHomeComponent implements OnInit {
 
   public token: string = localStorage.getItem('token');
-  constructor(public router: Router, private systemUsersService: SystemUsersService) { }
+  constructor(private translate: TranslateService,public router: Router, private systemUsersService: SystemUsersService) { }
 
   ngOnInit() {}
 
@@ -40,5 +41,8 @@ export class SystemUsersHomeComponent implements OnInit {
 
   }
 
+  changeLang(language: string) {
+    this.translate.use(language);
+  }
 }
 
