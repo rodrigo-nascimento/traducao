@@ -7,6 +7,7 @@ import { SystemUsersService } from '../../../shared/services/system-users.servic
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
 import {NgxMaskModule} from 'ngx-mask';
+import { PageHeaderModule, StatModule } from '../../../shared/index';
 import { MaskService } from '../../../shared/services/mask-forms.service';
 import { AuditService } from '../../../shared/services/audit.service';
 
@@ -14,6 +15,8 @@ import { AuditService } from '../../../shared/services/audit.service';
 @NgModule({
   imports: [
     CommonModule,
+    PageHeaderModule,
+    StatModule,
     NewSystemUserRoutingModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),

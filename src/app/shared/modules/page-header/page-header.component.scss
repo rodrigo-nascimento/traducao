@@ -1,4 +1,32 @@
-.breadcrumb{
-    font-size: 14px;
-    background-color: #e9ecef69;
-}
+
+.navegacao {
+    height: 43px;
+    background-color: #18638c; 
+    border-radius: 5px;   
+    border: 1px solid rgba(255, 118, 118, 0);
+    padding-top: 4px;
+    list-style-type: none;
+  }
+  .row-item {
+    margin-left: 3px;
+  }
+  .fa {
+    color: #fff;
+    font-size: 18px;
+  }
+  .titulo-pagina {
+    color: #fff;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 15px;
+  }
+  .fa-angle-right {
+    font-size: 25px;
+    color: #fff;
+    margin-left: 5px;
+  }
+  .row-explicativo {
+    margin-left: 5px;
+    margin-top: 2px;
+    color: rgb(176, 185, 241);
+  }

@@ -54,6 +54,14 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit() {}
 
+    public array : Array<Object> = [
+    
+        { name: 'Dashboard',
+          path: '/dashboard',
+          icone: 'fa-home'
+        }
+    ]
+
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);
         this.alerts.splice(index, 1);

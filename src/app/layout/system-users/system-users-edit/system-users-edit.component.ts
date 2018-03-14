@@ -85,6 +85,23 @@ export class SystemUsersEditComponent implements OnInit {
     this.inscricao.unsubscribe();
   }
 
+  public array : Array<Object> = [
+    
+    { name: 'Users',
+      path: '/system-users',
+      icone: 'fa-users'
+    },
+    { name:'Listagem',
+      path:'/system-users/systemUsersList',
+      icone:'fa-list'
+    },
+    { name:'Editar',
+      path:'system-users/systemUsersEdit',
+      icone:'fa-edit'
+    }
+
+  ]
+
   /* ---------------------- Utilitários --------------------------------------- */
   public closeAlert(id): void {
     document.getElementById(id).remove();

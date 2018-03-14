@@ -52,6 +52,37 @@ export class SystemUsersListComponent implements OnInit {
     this.main(1);
   }
 
+  public array : Array<Object> = [
+    
+    { name: 'Users',
+      path: '/system-users',
+      icone: 'fa-users'
+    },
+    
+    { name:'Listagem',
+      path:'/system-users/systemUsersList',
+      icone:'fa-list'
+    }
+  ]
+  
+  /* ***************** Busca **********************/
+  public search(option, filter) {
+
+    var objSearch: object = {
+      campo: option,
+      valor: filter
+    };
+
+    this.systemUsersService.search(this.token, objSearch)
+      .subscribe((apiResponse: SystemUsers[]) => {
+
+        this.apiUser = apiResponse;
+        this.carregarListaDePaginas();
+      }
+    );
+  }
+
+
   // Visualização do Usuário 
   public openVisualization(id): void {
 
@@ -221,34 +252,4 @@ export class SystemUsersListComponent implements OnInit {
 
   }
 
-
-  /* ************************* Busca **************************/
-
-  public search(field, value) {
-
-    var objSearch: object = {
-      campo: field,
-      valor: value
-    };
-
-
-    if (field != 'INVALID') {
-
-      this.systemUsersService.search(this.token, objSearch)
-      .subscribe((apiResponse: SystemUsers[]) => {
-          console.log(apiResponse)
-          this.apiUser = apiResponse;
-          console.log('apI');
-          console.log(this.apiUser);
-          this.carregarListaDePaginas();
-          /* CARREGA A LISTA DE PAGINAS MAS PRECISA ARRUMAR O TOTAL DE USUARIOS E COISAS DO TIPO */
-      });
-
-    } else {
-
-      alert('tipo invalido');
-
-
-    }
-  }
 }

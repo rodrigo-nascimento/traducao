@@ -71,6 +71,19 @@ export class NewSystemUserComponent implements OnInit {
     this.formNewUser.controls.active.setValue("ATIVADO");
   }
 
+  public array : Array<Object> = [
+    { 
+      name: 'Users',
+      path: '/system-users',
+      icone: 'fa-home'
+    },
+    { 
+      name: 'Cadastrar',
+      path: '/system-users/newSystemUser',
+      icone: 'fa-user-plus'
+    }
+  ]
+
   /* ---------------------- Utilitários --------------------------------------- */
   closeAlert(id) {
     document.getElementById(id).remove();

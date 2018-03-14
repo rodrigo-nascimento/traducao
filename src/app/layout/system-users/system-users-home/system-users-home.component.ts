@@ -18,6 +18,13 @@ export class SystemUsersHomeComponent implements OnInit {
 
   ngOnInit() {}
 
+  public array : Array<Object> = [
+    { name: 'Users',
+      path: '/system-users',
+      icone: 'fa-users'
+    }
+  ]
+
   public listUsers(): void {
 
   /*   this.systemUsersService.countUser(this.token)
